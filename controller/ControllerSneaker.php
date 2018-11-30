@@ -16,9 +16,9 @@ class ControllerSneaker {
     }
 
     public static function read() {
-        $v = ModelSneaker::select($_GET['ids']);   //appel au modèle pour gerer la BD
+        $s = ModelSneaker::select($_GET['ids']);   //appel au modèle pour gerer la BD
 
-        if(!$v) {
+        if(!$s) {
             $pagetitle = "Erreur";
             $view = "error";
         }
@@ -31,11 +31,11 @@ class ControllerSneaker {
     }
 
     public static function create() {
-        $v = new ModelSneaker();
+        $s = new ModelSneaker();
         $modifier = "required";
         $target_action = "created";
 
-        if(!$v) {
+        if(!$s) {
             $pagetitle = "Erreur";
             $view = "error";
         }
@@ -49,7 +49,7 @@ class ControllerSneaker {
 
     public static function created() {
         ModelSneaker::save(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
-        $tab_v = ModelSneaker::selectAll();
+        $tab_s = ModelSneaker::selectAll();
 
         $pagetitle = "Sneaker créée";
         $view = "created";
@@ -58,11 +58,11 @@ class ControllerSneaker {
     }
 
     public static function update() {
-        $v = ModelSneaker::select($_GET['ids']);
+        $s = ModelSneaker::select($_GET['ids']);
         $modifier = "readonly";
         $target_action = "updated";
 
-        if(!$v) {
+        if(!$s) {
             $pagetitle = "Erreur";
             $view = "error";
         }
@@ -76,7 +76,7 @@ class ControllerSneaker {
 
     public static function updated() {
         ModelSneaker::update(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
-        $tab_v = ModelSneaker::selectAll();
+        $tab_s = ModelSneaker::selectAll();
 
         $pagetitle = "Sneaker modifiée";
         $view = "updated";
@@ -87,7 +87,7 @@ class ControllerSneaker {
     public static function delete() {
         $ids = $_GET['ids'];
         ModelSneaker::delete($ids);
-        $tab_v = ModelSneaker::selectAll();
+        $tab_s = ModelSneaker::selectAll();
 
         if(!$ids) {
             $pagetitle = "Erreur";
