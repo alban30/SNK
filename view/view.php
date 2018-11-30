@@ -7,12 +7,26 @@
     </head>
     <body>
         <header>
-          <nav style="border: 1px solid black;text-align:center;padding:1%;">
-            <a href="index.php?action=readAll&controller=voiture">Les Voitures</a>
-            <a href="index.php?action=readAll&controller=utilisateur">Les Utilisateurs</a>
-            <a href="index.php?action=readAll&controller=trajet">Les Trajets</a>
-            <a href="config/preference.html">Préférence</a>
-          </nav>
+            <nav>
+                <div>
+                    <div>
+                        <a><img alt="Salut" src="img/logo.jpg"/></a>
+                    </div>
+                </div>
+                <ul class="btw">
+                    <li>
+                        <a class="ici" href="index.php">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="index.php?action=readAll&controller=sneaker">Sneakers</a>
+                    </li>
+                    <li>
+                        <a href="index.php?action=readAll&controller=other">Dérivés</a>
+                    </li>
+                    <li>
+                        <a href="config/preference.html">Préférence</a>
+                    </li>
+            </nav>
         </header>
 
         <?php
@@ -23,9 +37,17 @@
         ?>
 
         <footer>
-          <p style="border: 1px solid black;text-align:right;padding-right:1em;">
-            Site de covoiturage de ...
-          </p>
+            <a href="https://www.facebook.com/" target="_blank">
+                <img class="social" src="img/icon/facebook.png" alt="fb">
+            </a>
+            <a href="https://twitter.com/" target="_blank">
+                <img class="social" src="img/icon/twitter.png" alt="twitter">
+            </a>
+            <a href="https://www.google.fr/" target="_blank">
+                <img class="social" src="img/icon/google.png" alt="google">
+            </a>
+            <p>Made with <img src="img/heart.png" alt="heart"> in Montpellier</p>
+            <p>&copy; Exo-Skeleton 2017-2018 | Tous droits réservés.</p>
         </footer>
     </body>
 </html>

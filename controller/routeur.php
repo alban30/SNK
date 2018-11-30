@@ -1,11 +1,12 @@
 <?php
 require_once (File::build_path(array("controller", "ControllerSneaker.php")));
+require_once (File::build_path(array("controller", "ControllerAccueil.php")));
 
 if(isset($_COOKIE["Preference"])) {
 	$controler_default = $_COOKIE["Preference"];
 }
 else {
-	$controler_default = "sneaker";
+	$controler_default = "accueil";
 }
 
 if(isset($_GET['controller'])) {
