@@ -26,8 +26,8 @@ class Model {
 
   public static function selectAll() {
       try {
-          $table_name = static::$object;
-          $class_name = "Model" . ucfirst(static::$object);
+          $table_name = static::$phpmy;
+          $class_name = "Model" . ucfirst(static::$name);
 
           $rep = Model::$pdo->query("SELECT * FROM " . $table_name);
           $rep->setFetchMode(PDO::FETCH_CLASS, $class_name);
