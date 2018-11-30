@@ -2,8 +2,7 @@
 require_once (File::build_path(array("model", "ModelSneaker.php"))); // chargement du modèle
 
 class ControllerSneaker {
-
-    protected static $object = "sneaker";
+    protected static $object = "snk_sneaker";
 
     public static function readAll() {
         $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
