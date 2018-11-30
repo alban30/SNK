@@ -6,7 +6,7 @@ class ControllerVoiture {
     protected static $object = "sneaker";
 
     public static function readAll() {
-        $tab_s = ModelVoiture::selectAll();     //appel au modèle pour gerer la BD
+        $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
 
         $pagetitle = "Liste des sneakers";
         $controller = "sneaker";
@@ -15,15 +15,15 @@ class ControllerVoiture {
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
-    /*public static function read() {
-        $v = ModelVoiture::select($_GET['immat']);   //appel au modèle pour gerer la BD
+    public static function read() {
+        $v = ModelSneaker::select($_GET['ids']);   //appel au modèle pour gerer la BD
 
         if(!$v) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Affichage d'une voiture";
+            $pagetitle = "Affichage d'une sneaker";
             $view = "detail";
         }
         
@@ -31,7 +31,7 @@ class ControllerVoiture {
     }
 
     public static function create() {
-        $v = new ModelVoiture();
+        $v = new ModelSneaker();
         $modifier = "required";
         $target_action = "created";
 
@@ -40,7 +40,7 @@ class ControllerVoiture {
             $view = "error";
         }
         else {
-            $pagetitle = "Création d'une voiture";
+            $pagetitle = "Création d'une sneaker";
             $view = "update";
         }
 
@@ -48,17 +48,17 @@ class ControllerVoiture {
     }
 
     public static function created() {
-        ModelVoiture::save(array("marque"=>$_POST['marque'], "couleur"=>$_POST['couleur'], "immatriculation"=>$_POST['immatriculation']));
-        $tab_v = ModelVoiture::selectAll();
+        ModelSneaker::save(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
+        $tab_v = ModelSneaker::selectAll();
 
-        $pagetitle = "Voiture créée";
+        $pagetitle = "Sneaker créée";
         $view = "created";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function update() {
-        $v = ModelVoiture::select($_GET['immat']);
+        $v = ModelSneaker::select($_GET['ids']);
         $modifier = "readonly";
         $target_action = "updated";
 
@@ -67,7 +67,7 @@ class ControllerVoiture {
             $view = "error";
         }
         else {
-            $pagetitle = "Modification d'une voiture";
+            $pagetitle = "Modification d'une sneaker";
             $view = "update";
         }
 
@@ -75,30 +75,30 @@ class ControllerVoiture {
     }
 
     public static function updated() {
-        ModelVoiture::update(array("immatriculation" => $_POST['immatriculation'], "marque" => $_POST['marque'], "couleur" => $_POST['couleur']));
-        $tab_v = ModelVoiture::selectAll();
+        ModelSneaker::update(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
+        $tab_v = ModelSneaker::selectAll();
 
-        $pagetitle = "Voiture modifiée";
+        $pagetitle = "Sneaker modifiée";
         $view = "updated";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function delete() {
-        $immat = $_GET['immat'];
-        ModelVoiture::delete($immat);
-        $tab_v = ModelVoiture::selectAll();
+        $ids = $_GET['ids'];
+        ModelSneaker::delete($ids);
+        $tab_v = ModelSneaker::selectAll();
 
-        if(!$immat) {
+        if(!$ids) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Suppression d'une voiture";
+            $pagetitle = "Suppression d'une sneaker";
             $view = "deleted";
         }
         
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
-    }*/
+    }
 }
 ?>
