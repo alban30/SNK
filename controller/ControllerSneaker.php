@@ -1,7 +1,7 @@
 <?php
 require_once (File::build_path(array("model", "ModelSneaker.php"))); // chargement du modèle
 
-class ControllerVoiture {
+class ControllerSneaker {
 
     protected static $object = "sneaker";
 
