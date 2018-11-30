@@ -6,24 +6,23 @@ class ControllerAccessoire {
     protected static $object = "accessoire";
 
     public static function readAll() {
-        $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
+        $tab_a = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
 
-        $pagetitle = "Liste des sneakers";
-        $controller = "sneaker";
+        $pagetitle = "Liste des accessoires";
         $view = "list";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function read() {
-        $v = ModelSneaker::select($_GET['ids']);   //appel au modèle pour gerer la BD
+        $a = ModelSneaker::select($_GET['idAccessoire']);   //appel au modèle pour gerer la BD
 
-        if(!$v) {
+        if(!$a) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Affichage d'une sneaker";
+            $pagetitle = "Affichage d'un accessoire";
             $view = "detail";
         }
         
@@ -31,7 +30,7 @@ class ControllerAccessoire {
     }
 
     public static function create() {
-        $v = new ModelSneaker();
+        $a = new ModelSneaker();
         $modifier = "required";
         $target_action = "created";
 
