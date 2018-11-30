@@ -6,7 +6,7 @@ class ControllerAccessoire {
     protected static $object = "accessoire";
 
     public static function readAll() {
-        $tab_a = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
+        $tab_a = ModelAccessoire::selectAll();     //appel au modèle pour gerer la BD
 
         $pagetitle = "Liste des accessoires";
         $view = "list";
@@ -15,7 +15,7 @@ class ControllerAccessoire {
     }
 
     public static function read() {
-        $a = ModelSneaker::select($_GET['idAccessoire']);   //appel au modèle pour gerer la BD
+        $a = ModelAccessoire::select($_GET['idAccessoire']);   //appel au modèle pour gerer la BD
 
         if(!$a) {
             $pagetitle = "Erreur";
@@ -30,16 +30,16 @@ class ControllerAccessoire {
     }
 
     public static function create() {
-        $a = new ModelSneaker();
+        $a = new ModelAccessoire();
         $modifier = "required";
         $target_action = "created";
 
-        if(!$v) {
+        if(!$a) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Création d'une sneaker";
+            $pagetitle = "Création d'un accessoire";
             $view = "update";
         }
 
@@ -47,26 +47,26 @@ class ControllerAccessoire {
     }
 
     public static function created() {
-        ModelSneaker::save(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
-        $tab_v = ModelSneaker::selectAll();
+        ModelAccessoire::save(array("id_accessoire"=>$_POST['idAccessoire'],"nom_accessoire"=>$_POST['nomAccessoire'],"prix_accessoire"=>$_POST['prixAccessoire'],"id_marque"=>$_POST['idMarque']));
+        $tab_a = ModelAccessoire::selectAll();
 
-        $pagetitle = "Sneaker créée";
+        $pagetitle = "Accessoire créé";
         $view = "created";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function update() {
-        $v = ModelSneaker::select($_GET['ids']);
+        $a = ModelAccessoire::select($_GET['idAccessoire']);
         $modifier = "readonly";
         $target_action = "updated";
 
-        if(!$v) {
+        if(!$a) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Modification d'une sneaker";
+            $pagetitle = "Modification d'un accessoire";
             $view = "update";
         }
 
@@ -74,26 +74,26 @@ class ControllerAccessoire {
     }
 
     public static function updated() {
-        ModelSneaker::update(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
-        $tab_v = ModelSneaker::selectAll();
+        ModelAccessoire::update(array("id_accessoire"=>$_POST['idAccessoire'],"nom_accessoire"=>$_POST['nomAccessoire'],"prix_accessoire"=>$_POST['prixAccessoire'],"id_marque"=>$_POST['idMarque']));
+        $tab_a = ModelAccessoire::selectAll();
 
-        $pagetitle = "Sneaker modifiée";
+        $pagetitle = "Accessoire modifié";
         $view = "updated";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function delete() {
-        $ids = $_GET['ids'];
-        ModelSneaker::delete($ids);
-        $tab_v = ModelSneaker::selectAll();
+        $idAccessoire = $_GET['idAccessoire'];
+        ModelAccessoire::delete($idAccessoire);
+        $tab_a = ModelAccessoire::selectAll();
 
-        if(!$ids) {
+        if(!$idAccessoire) {
             $pagetitle = "Erreur";
             $view = "error";
         }
         else {
-            $pagetitle = "Suppression d'une sneaker";
+            $pagetitle = "Suppression d'un accessoire";
             $view = "deleted";
         }
         
