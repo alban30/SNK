@@ -70,6 +70,7 @@ body {
 /*-------- 1. GENERAL --------*/
 
 body {
+  min-height: 100vh;
 	margin: 0;
   font-family: "Lato", arial;
 	background-color: #fff;
@@ -200,6 +201,11 @@ body {
   .ici {
     border-bottom: solid #fff 2px;
   }
+}
+
+/*-------- 3. MAIN --------*/
+main {
+  flex-grow: 1;
 }
 
 /*-------- 4. FOOTER --------*/

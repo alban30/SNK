@@ -29,12 +29,14 @@
             </nav>
         </header>
 
-        <?php
-        // Si $controleur='voiture' et $view='list',
-        // alors $filepath="/chemin_du_site/view/voiture/list.php"
-        $filepath = File::build_path(array("view", static::$object, "$view.php"));
-        require $filepath;
-        ?>
+        <main>
+            <?php
+            // Si $controleur='voiture' et $view='list',
+            // alors $filepath="/chemin_du_site/view/voiture/list.php"
+            $filepath = File::build_path(array("view", static::$object, "$view.php"));
+            require $filepath;
+            ?>
+        </main>
 
         <footer>
             <a href="https://www.facebook.com/" target="_blank">
