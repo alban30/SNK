@@ -1,6 +1,7 @@
 <?php
-require_once (File::build_path(array("controller", "ControllerSneaker.php")));
 require_once (File::build_path(array("controller", "ControllerAccueil.php")));
+require_once (File::build_path(array("controller", "ControllerSneaker.php")));
+require_once (File::build_path(array("controller", "ControllerAccessoire.php")));
 
 if(isset($_COOKIE["Preference"])) {
 	$controler_default = $_COOKIE["Preference"];

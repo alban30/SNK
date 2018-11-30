@@ -2,9 +2,9 @@
 require_once (File::build_path(array("model", "Model.php")));
 
 class ModelAccessoire extends Model {
-    protected static $name = "sneaker";
-    protected static $phpmy = "snk_sneaker";
-    protected static $primary="id_sneaker";
+    protected static $name = "accessoire";
+    protected static $phpmy = "snk_accessoire";
+    protected static $primary="id_accessoire";
 
     private $id_accessoire;
     private $nom_accessoire;

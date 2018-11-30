@@ -3,7 +3,7 @@ require_once (File::build_path(array("model", "ModelAccessoire.php"))); // charg
 
 class ControllerAccessoire {
 
-    protected static $object = "accessoire";
+    protected static $object = "snk_accessoire";
 
     public static function readAll() {
         $tab_a = ModelAccessoire::selectAll();     //appel au modèle pour gerer la BD
