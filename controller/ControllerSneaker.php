@@ -9,14 +9,13 @@ class ControllerSneaker {
         $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
 
         $pagetitle = "Liste des sneakers";
-        $controller = "sneaker";
         $view = "list";
 
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function read() {
-        $s = ModelSneaker::select($_GET['ids']);   //appel au modèle pour gerer la BD
+        $s = ModelSneaker::select($_GET['idSneaker']);   //appel au modèle pour gerer la BD
 
         if(!$s) {
             $pagetitle = "Erreur";
@@ -48,7 +47,7 @@ class ControllerSneaker {
     }
 
     public static function created() {
-        ModelSneaker::save(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
+        ModelSneaker::save(array("id_sneaker"=>$_POST['idSneaker'],"nom_sneaker"=>$_POST['nomSneaker'],"prix_Sneaker"=>$_POST['prixSneaker'],"couleur_sneaker"=>$_POST['couleurSneaker'],"pointure_sneaker"=>$_POST['pointureSneaker'],"id_marque"=>$_POST['idMarque']));
         $tab_s = ModelSneaker::selectAll();
 
         $pagetitle = "Sneaker créée";
@@ -58,7 +57,7 @@ class ControllerSneaker {
     }
 
     public static function update() {
-        $s = ModelSneaker::select($_GET['ids']);
+        $s = ModelSneaker::select($_GET['idSneaker']);
         $modifier = "readonly";
         $target_action = "updated";
 
@@ -75,7 +74,7 @@ class ControllerSneaker {
     }
 
     public static function updated() {
-        ModelSneaker::update(array("id_sneaker"=>$_POST['id'],"nom_sneaker"=>$_POST['nom'],"prix_Sneaker"=>$_POST['prix'],"couleur_sneaker"=>$_POST['couleur'],"pointure_sneaker"=>$_POST['pointure'],"id_marque"=>$_POST['marque']));
+        ModelSneaker::update(array("id_sneaker"=>$_POST['idSneaker'],"nom_sneaker"=>$_POST['nomSneaker'],"prix_Sneaker"=>$_POST['prixSneaker'],"couleur_sneaker"=>$_POST['couleurSneaker'],"pointure_sneaker"=>$_POST['pointureSneaker'],"id_marque"=>$_POST['idMarque']));
         $tab_s = ModelSneaker::selectAll();
 
         $pagetitle = "Sneaker modifiée";
@@ -85,11 +84,11 @@ class ControllerSneaker {
     }
 
     public static function delete() {
-        $ids = $_GET['ids'];
-        ModelSneaker::delete($ids);
+        $idSneaker = $_GET['idSneaker'];
+        ModelSneaker::delete($idSneaker);
         $tab_s = ModelSneaker::selectAll();
 
-        if(!$ids) {
+        if(!$idSneaker) {
             $pagetitle = "Erreur";
             $view = "error";
         }
