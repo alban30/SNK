@@ -61,6 +61,38 @@ class ModelSneaker extends Model {
         $this->id_marque = $idMarque;
     }
 
+    public function getNomMarque($idSneaker) {
+        try {
+            $sql = "SELECT nom_marque from snk_marque WHERE id_sneaker=:tag_idMarque";
+            // Préparation de la requête
+            $req_prep = Model::$pdo->prepare($sql);
+
+            $values = array(
+                "tag_idMarque" => $_GET["idSneaker"],
+                //nomdutag => valeur, ...
+            );
+            // On donne les valeurs et on exécute la requête     
+            $req_prep->execute($values);
+
+            // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelSneaker');
+            $tab_nom = $req_prep->fetchAll();
+            // Attention, si il n'y a pas de résultats, on renvoie false
+            if (empty($tab_nom))
+                return false;
+            return $tab_voit[0];
+        }
+        catch (PDOException $e) {
+            if (Conf::getDebug()) {
+              echo $e->getMessage(); // affiche un message d'erreur
+            }
+            else {
+              echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
+            }
+            die();
+        }
+    }
+
     public function __construct($data = array()) {
         if (!empty($data)) {
             $this->id_sneaker = $data("idSneaker");

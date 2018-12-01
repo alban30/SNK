@@ -1,5 +1,9 @@
 <?php
-echo '<a style="margin-right: 1%" href="index.php?action=delete&immat=' . htmlspecialchars($v->getImmatriculation()) . '">Supprimer cette voiture</a>';
-echo '<a style="margin-right: 1%" href="index.php?action=update&immat=' . htmlspecialchars($v->getImmatriculation()) . '">Modifier cette voiture</a>';
-echo '<p> Voiture ' . htmlspecialchars($v->getImmatriculation()) . ' de marque ' . htmlspecialchars($v->getMarque()) . ' (couleur ' . htmlspecialchars($v->getCouleur()) . ') </p>';
+
+echo '<p> Sneaker ' . htmlspecialchars($s->getNomSneaker()) . ' de marque ' . htmlspecialchars($s->getNomMarque()) . ' de couleur ' . htmlspecialchars($s->getCouleurSneaker()) . ' et de pointure ' . htmlspecialchars($s->getPointureSneaker()) . ' coûtent ' . htmlspecialchars($s->getPrixSneaker()) . '</p>';
+
+echo '<a style="margin-right: 1%" href="index.php?action=delete&idSneaker=' . htmlspecialchars($v->getIdSneaker()) . '">Supprimer ces Sneakers</a>';
+
+echo '<a style="margin-right: 1%" href="index.php?action=update&idSneaker=' . htmlspecialchars($v->getIdSneaker()) . '">Modifier ces Sneakers</a>';
+
 ?>

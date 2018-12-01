@@ -1,4 +1,4 @@
 <?php
-echo '<p>La voiture ' . rawurlencode($immat) . ' a bien été supprimée !</p>';
-require File::build_path(array("view", "voiture", "list.php"));
+echo '<p>Les Sneakers ' . rawurlencode($idSneaker) . ' ont bien été supprimées !</p>';
+require File::build_path(array("view", "snk_sneaker", "list.php"));
 ?>

@@ -1,2 +1,2 @@
-<p>La voiture a bien été créée !</p>
-<?php require File::build_path(array("view", "voiture", "list.php"))?>
+<p>Les Sneakers ont bien été créées !</p>
+<?php require File::build_path(array("view", "snk_sneaker", "list.php"))?>
