@@ -3,7 +3,7 @@ require_once (File::build_path(array("model", "ModelAccessoire.php"))); // charg
 
 class ControllerAccessoire {
 
-    protected static $object = "snk_accessoire";
+    protected static $phpmy = "snk_accessoire";
 
     public static function readAll() {
         $tab_a = ModelAccessoire::selectAll();     //appel au modèle pour gerer la BD
@@ -25,7 +25,7 @@ class ControllerAccessoire {
             $pagetitle = "Affichage d'un accessoire";
             $view = "detail";
         }
-        
+
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
@@ -96,7 +96,7 @@ class ControllerAccessoire {
             $pagetitle = "Suppression d'un accessoire";
             $view = "deleted";
         }
-        
+
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
     }
 }

@@ -45,7 +45,7 @@ class Model {
 
   public static function select($primary_value) {
       try {
-          $table_name = static::$object;
+          $table_name = static::$phpmy;
           $class_name = "Model" . ucfirst(static::$name);
           $primary_key = static::$primary;
 

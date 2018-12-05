@@ -2,7 +2,7 @@
 require_once (File::build_path(array("model", "ModelSneaker.php"))); // chargement du modèle
 
 class ControllerSneaker {
-    protected static $object = "snk_sneaker";
+    protected static $phpmy = "snk_sneaker";
 
     public static function readAll() {
         $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
@@ -24,7 +24,7 @@ class ControllerSneaker {
             $pagetitle = "Affichage d'une sneaker";
             $view = "detail";
         }
-        
+
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
@@ -95,7 +95,7 @@ class ControllerSneaker {
             $pagetitle = "Suppression d'une sneaker";
             $view = "deleted";
         }
-        
+
         require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
     }
 }

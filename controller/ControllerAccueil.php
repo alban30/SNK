@@ -1,7 +1,7 @@
 <?php
 
 class ControllerAccueil {
-    protected static $object = "accueil";
+    protected static $phpmy = "accueil";
 
     public static function readAll() {
         $pagetitle = "SNK - World Sneakers";
