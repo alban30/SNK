@@ -31,18 +31,10 @@ if(class_exists($controller_class)) {
 	    $controller_class::$action();
 	}
 	else {
-	    $pagetitle = "Erreur";
-	    $controller = $controler_default;
-	    $view = "error";
-
-	    require (File::build_path(array("view", "view.php")));
+	    $controller_class::error();
 	}
 }
 else {
-	$pagetitle = "Erreur";
-	$controller = $controler_default;
-	$view = "error";
-
-	require (File::build_path(array("view", "view.php")));
+	$controller_class::error();
 }
 ?>

@@ -31,8 +31,6 @@
 
         <main>
             <?php
-            // Si $controleur='voiture' et $view='list',
-            // alors $filepath="/chemin_du_site/view/voiture/list.php"
             $filepath = File::build_path(array("view", static::$phpmy, "$view.php"));
             require $filepath;
             ?>

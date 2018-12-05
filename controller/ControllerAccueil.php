@@ -9,5 +9,12 @@ class ControllerAccueil {
 
         require (File::build_path(array("view", "view.php")));
     }
+
+    public static function error() {
+    	$pagetitle = "Erreur";
+	    $view = "error";
+
+	    require (File::build_path(array("view", "view.php")));
+    }
 }
 ?>
