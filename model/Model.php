@@ -46,7 +46,7 @@ class Model {
   public static function select($primary_value) {
       try {
           $table_name = static::$object;
-          $class_name = "Model" . ucfirst(static::$object);
+          $class_name = "Model" . ucfirst(static::$name);
           $primary_key = static::$primary;
 
           $sql = "SELECT * FROM " . $table_name . " WHERE " . $primary_key . "=:primary";
@@ -67,9 +67,9 @@ class Model {
           die();
       }
 
-      if (empty($tab_voit))
+      if (empty($tab_sneakers))
             return false;
-        return $tab_voit[0];
+        return $tab_sneakers[0];
   }
 
   public static function delete($primary_value) {
@@ -103,7 +103,7 @@ class Model {
               $sql .= $key . " = :" . $key . ', ';
           }
           $sql = rtrim($sql, ', ') . " WHERE " . $primary_key . " = :" . $primary_key;
-          
+
           $req_prep = Model::$pdo->prepare($sql);
           $req_prep->execute($data);
       } catch(PDOException $e) {

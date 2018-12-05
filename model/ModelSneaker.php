@@ -71,7 +71,7 @@ class ModelSneaker extends Model {
                 "tag_idMarque" => $_GET["idSneaker"],
                 //nomdutag => valeur, ...
             );
-            // On donne les valeurs et on exécute la requête     
+            // On donne les valeurs et on exécute la requête
             $req_prep->execute($values);
 
             // On récupère les résultats comme précédemment
@@ -80,7 +80,7 @@ class ModelSneaker extends Model {
             // Attention, si il n'y a pas de résultats, on renvoie false
             if (empty($tab_nom))
                 return false;
-            return $tab_voit[0];
+            return $tab_nom[0];
         }
         catch (PDOException $e) {
             if (Conf::getDebug()) {
