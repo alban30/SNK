@@ -46,7 +46,7 @@ class ControllerAccessoire {
     }
 
     public static function created() {
-            ModelAccessoire::save(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "nom_marque"=>myGet("nomMarque")));
+            ModelAccessoire::save(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
             $tab_a = ModelAccessoire::selectAll();
 
             $pagetitle = "Accessoire créé";
@@ -73,7 +73,7 @@ class ControllerAccessoire {
     }
 
     public static function updated() {
-            ModelAccessoire::update(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "nom_marque"=>myGet("nomMarque")));
+            ModelAccessoire::update(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
             $tab_a = ModelAccessoire::selectAll();
 
             $pagetitle = "Accessoire modifié";
