@@ -50,7 +50,7 @@
                 <img class="social" src="img/icon/google.png" alt="google">
             </a>
             <p>Made with <img src="img/heart.png" alt="heart"> in Montpellier</p>
-            <p>&copy; SNK 2018-2019 | Tous droits réservés.</p>
+            <p>&copy; SNK - World Sneakers 2018-2019 | Tous droits réservés.</p>
         </footer>
     </body>
 </html>
