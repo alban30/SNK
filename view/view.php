@@ -23,9 +23,6 @@
                     <li>
                         <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                     </li>
-                    <li>
-                        <a href="config/preference.html">Préférence</a>
-                    </li>
                     <?php Session::getUserMenu(); ?>;
             </nav>
         </header>
