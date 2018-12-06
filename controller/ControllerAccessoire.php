@@ -26,7 +26,7 @@ class ControllerAccessoire {
                 $links = "";
 
                 if(Session::is_Admin()) {
-                        $links = '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
+                        $links = '<a style="margin-right: 1%" href="index.php?controller=accessoire&action=delete&idAccessoire=' . htmlspecialchars($a->get("id_accessoire")) . '">Supprimer cet accessoire</a><a style="margin-right: 1%" href="index.php?controller=accessoire&action=update&idAccessoire=' . htmlspecialchars($a->get("id_accessoire")) . '">Modifier cet accessoire</a>';
                 }
             }
             
