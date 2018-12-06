@@ -29,7 +29,7 @@ class Model {
                     $table_name = static::$object;
                     $class_name = "Model" . ucfirst(static::$object);
 
-                    $rep = Model::$pdo->query("SELECT * FROM " . $table_name);
+                    $rep = Model::$pdo->query("SELECT * FROM snk_" . $table_name);
                     $rep->setFetchMode(PDO::FETCH_CLASS, $class_name);
                     return $rep->fetchAll();
             } catch(PDOException $e) {
@@ -49,7 +49,7 @@ class Model {
                     $class_name = "Model" . ucfirst(static::$object);
                     $primary_key = static::$primary;
 
-                    $sql = "SELECT * FROM " . $table_name . " WHERE " . $primary_key . "=:primary";
+                    $sql = "SELECT * FROM snk_" . $table_name . " WHERE " . $primary_key . "=:primary";
                     $req_prep = Model::$pdo->prepare($sql);
 
                     $values = array("primary" => $primary_value,);
@@ -77,7 +77,7 @@ class Model {
                     $table_name = static::$object;
                     $primary_key = static::$primary;
 
-                    $sql = "DELETE FROM " . $table_name . " WHERE " . $primary_key . "=:primary";
+                    $sql = "DELETE FROM snk_" . $table_name . " WHERE " . $primary_key . "=:primary";
                     $req_prep = Model::$pdo->prepare($sql);
 
                     $values = array('primary' => $primary_value);
@@ -98,7 +98,7 @@ class Model {
                     $table_name = static::$object;
                     $primary_key = static::$primary;
 
-                    $sql = "UPDATE " . $table_name . " SET ";
+                    $sql = "UPDATE snk_" . $table_name . " SET ";
                     foreach ($data as $key => $value) {
                         $sql .= $key . " = :" . $key . ', ';
                     }
@@ -122,7 +122,7 @@ class Model {
                     $table_name = static::$object;
                     $primary_key = static::$primary;
 
-                    $sql = "INSERT INTO " . $table_name . " (";
+                    $sql = "INSERT INTO snk_" . $table_name . " (";
                     foreach ($data as $key => $value){
                         $sql .= $key . ', ';
                     }
