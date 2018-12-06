@@ -21,7 +21,7 @@
                         <a href="index.php?action=readAll&controller=sneaker">Sneakers</a>
                     </li>
                     <li>
-                        <a href="index.php?action=readAll&controller=other">Dérivés</a>
+                        <a href="index.php?action=readAll&controller=accessoire">Accessoires</a>
                     </li>
                     <li>
                         <a href="config/preference.html">Préférence</a>
