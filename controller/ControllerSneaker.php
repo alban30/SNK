@@ -33,6 +33,13 @@ class ControllerSneaker {
             $modifier = "required";
             $target_action = "created";
 
+            if(!Conf::getDebug()) {
+                    $method = "post";
+            }
+            else {
+                    $method = "get";
+            }
+
             if(!$s) {
                 $pagetitle = "Erreur";
                 $view = "error";
@@ -46,7 +53,7 @@ class ControllerSneaker {
     }
 
     public static function created() {
-            ModelSneaker::save(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "nom_marque"=>myGet("nomMarque")));
+            ModelSneaker::save(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
             $tab_s = ModelSneaker::selectAll();
 
             $pagetitle = "Sneaker créée";
@@ -59,6 +66,13 @@ class ControllerSneaker {
             $s = ModelSneaker::select(myGet("idSneaker"));
             $modifier = "readonly";
             $target_action = "updated";
+
+            if(!Conf::getDebug()) {
+                    $method = "post";
+            }
+            else {
+                    $method = "get";
+            }
 
             if(!$s) {
                 $pagetitle = "Erreur";
@@ -73,7 +87,7 @@ class ControllerSneaker {
     }
 
     public static function updated() {
-            ModelSneaker::update(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "nom_marque"=>myGet("nomMarque")));
+            ModelSneaker::update(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
             $tab_s = ModelSneaker::selectAll();
 
             $pagetitle = "Sneaker modifiée";
