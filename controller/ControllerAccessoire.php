@@ -38,6 +38,13 @@ class ControllerAccessoire {
             $modifier = "required";
             $target_action = "created";
 
+            if(!Conf::getDebug()) {
+                    $method = "post";
+            }
+            else {
+                    $method = "get";
+            }
+
             if(!$a) {
                 $pagetitle = "Erreur";
                 $view = "error";
@@ -61,9 +68,16 @@ class ControllerAccessoire {
     }
 
     public static function update() {
-            $a = ModelAccessoire::select(myGet("idSneaker"));
+            $a = ModelAccessoire::select(myGet("idAccessoire"));
             $modifier = "readonly";
             $target_action = "updated";
+
+            if(!Conf::getDebug()) {
+                    $method = "post";
+            }
+            else {
+                    $method = "get";
+            }
 
             if(!$a) {
                 $pagetitle = "Erreur";

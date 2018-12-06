@@ -16,7 +16,7 @@ class Conf {
             'password' => 'rendpasfou34'
     );
 
-    static private $debug = False;
+    static private $debug = true;
 
     static public function getLogin() {
             //en PHP l'indice d'un tableau n'est pas forcement un chiffre.
