@@ -8,7 +8,7 @@
 
                 <p>
                         <label for="nomAccessoire">Nom Accessoire</label> :
-                        <input type="text" placeholder="Ex : Stan Smith" name="nomAccessoire" id="nomAccessoire" value="<?php echo htmlspecialchars($a->get("nom_accessoire"));?>" required/>
+                        <input type="text" placeholder="Ex : Crep" name="nomAccessoire" id="nomAccessoire" value="<?php echo htmlspecialchars($a->get("nom_accessoire"));?>" required/>
                 </p>
 
                 <p>
