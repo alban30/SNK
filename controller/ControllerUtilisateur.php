@@ -24,6 +24,11 @@ class ControllerUtilisateur {
 			else {
 					$pagetitle = "Affichage d'un utilisateur";
 					$view = "detail";
+					$links = "";
+
+                    if(Session::isAdmin()) {
+                        	$links = '<a style="margin-right: 1%" href="index.php?action=update&controller=product&controller=product&reference=' . rawurlencode($i->get('reference')) . '">Mettre a jour ce produit</a><a style="margin-right: 1%" href="index.php?action=deleted&controller=product&reference=' . rawurlencode($i->get('reference')) . '">Supprimer ce produit</a>';
+                    }
 			}
 
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
