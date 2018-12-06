@@ -18,14 +18,15 @@
                         <a class="ici" href="index.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="index.php?action=readAll&controller=sneaker">Sneakers</a>
+                        <a href="index.php?controller=sneaker&action=readAll">Sneakers</a>
                     </li>
                     <li>
-                        <a href="index.php?action=readAll&controller=accessoire">Accessoires</a>
+                        <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                     </li>
                     <li>
                         <a href="config/preference.html">Préférence</a>
                     </li>
+                    <?php Session::getUserMenu(); ?>;
             </nav>
         </header>
 

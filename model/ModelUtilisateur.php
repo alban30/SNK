@@ -39,7 +39,7 @@ class ModelUtilisateur extends Model {
 
 	public static function checkPassword($login, $mot_de_passe_chiffre) {
 			try {
-					$sql = "SELECT * FROM utilisateur WHERE login=:login AND mdp=:mdp";
+					$sql = "SELECT * FROM snk_utilisateur WHERE login=:login AND mdp=:mdp";
 					$req_prep = Model::$pdo->prepare($sql);
 
 					$values = array("login" => $login, "mdp" => $mot_de_passe_chiffre);

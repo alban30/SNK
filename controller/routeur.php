@@ -2,6 +2,7 @@
 require_once (File::build_path(array("controller", "ControllerAccueil.php")));
 require_once (File::build_path(array("controller", "ControllerSneaker.php")));
 require_once (File::build_path(array("controller", "ControllerAccessoire.php")));
+require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
 
 function myGet($nomVar) {
 		if(isset($_GET[$nomVar])) {
