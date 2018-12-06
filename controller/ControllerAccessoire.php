@@ -23,6 +23,11 @@ class ControllerAccessoire {
             else {
                 $pagetitle = "Affichage d'un accessoire";
                 $view = "detail";
+                $links = "";
+
+                if(Session::is_Admin()) {
+                        $links = '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
+                }
             }
             
             require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
