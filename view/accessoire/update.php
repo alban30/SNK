@@ -18,7 +18,7 @@
 
                 <p>
                         <label for="marque_accessoire">Marque Accessoire</label> :
-                        <input type="number" placeholder="Ex : Nike" name="marque_accessoire" id="marque_accessoire" value="<?php echo htmlspecialchars($a->get("marque_accessoire"));?>" required/>
+                        <input type="text" placeholder="Ex : Nike" name="marque_accessoire" id="marque_accessoire" value="<?php echo htmlspecialchars($a->get("marque_accessoire"));?>" required/>
                 </p>
 
                 <p>

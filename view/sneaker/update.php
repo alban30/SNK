@@ -1,4 +1,4 @@
-<form method="<?php echo $method; ?>" action="index.php?action=<?php echo $target_action;?>">
+<form method="<?php echo $method; ?>" action="index.php?controller=sneaker&action=<?php echo $target_action;?>">
         <fieldset>
                 <legend>Mon formulaire :</legend>
                 <p>
@@ -28,7 +28,7 @@
 
                 <p>
                         <label for="marque_sneaker">Marque Sneaker</label> :
-                        <input type="number" placeholder="Ex : Adidas" name="marque_sneaker" id="marque_sneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
+                        <input type="text" placeholder="Ex : Adidas" name="marque_sneaker" id="marque_sneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
                 </p>
 
                 <p>
