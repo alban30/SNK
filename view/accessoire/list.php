@@ -1,5 +1,5 @@
 <?php
-foreach ($tab_v as $v) {
-    	echo '<p><a href="index.php?action=read&immat=' . rawurlencode($v->get("immatriculation")) . '"> Voiture d\'immatriculation ' . htmlspecialchars($v->get("immatriculation")) . '.</a></p>';
+foreach ($tab_a as $a) {
+    	echo '<p><a href="index.php?controller=accessoire&action=read&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '"> Accessoire d\'id ' . htmlspecialchars($a->get("id_accessoire")) . '.</a></p>';
 }
 ?>
