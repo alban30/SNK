@@ -2,33 +2,33 @@
         <fieldset>
                 <legend>Mon formulaire :</legend>
                 <p>
-                        <label for="id_sneaker">ID Sneaker</label> :
-                        <input type="number" placeholder="Ex : 1" name="id_sneaker" id="id_sneaker" value="<?php echo htmlspecialchars($s->get("id_sneaker"));?>" <?php echo $modifier; ?>/>
+                        <label for="idSneaker">ID Sneaker</label> :
+                        <input type="number" placeholder="Ex : 1" name="idSneaker" id="idSneaker" value="<?php echo htmlspecialchars($s->get("id_sneaker"));?>" <?php echo $modifier; ?>/>
                 </p>
 
                 <p>
-                        <label for="nom_sneaker">Nom Sneaker</label> :
-                        <input type="text" placeholder="Ex : Stan Smith" name="nom_sneaker" id="nom_sneaker" value="<?php echo htmlspecialchars($s->get("nom_sneaker"));?>" required/>
+                        <label for="nomSneaker">Nom Sneaker</label> :
+                        <input type="text" placeholder="Ex : Stan Smith" name="nomSneaker" id="nomSneaker" value="<?php echo htmlspecialchars($s->get("nom_sneaker"));?>" required/>
                 </p>
 
                 <p>
-                        <label for="prix_sneaker">Prix Sneaker</label> :
-                        <input type="number" placeholder="Ex : 100" name="prix_sneaker" id="prix_sneaker" value="<?php echo htmlspecialchars($s->get("prix_sneaker"));?>" required/>
+                        <label for="prixSneaker">Prix Sneaker</label> :
+                        <input type="number" placeholder="Ex : 100" name="prixSneaker" id="prixSneaker" value="<?php echo htmlspecialchars($s->get("prix_sneaker"));?>" required/>
                 </p>
 
                 <p>
-                        <label for="couleur_sneaker">Couleur Sneaker</label> :
-                        <input type="text" placeholder="Ex : Blanche" name="couleur_sneaker" id="couleur_sneaker" value="<?php echo htmlspecialchars($s->get("couleur_sneaker"));?>" required/>
+                        <label for="couleurSneaker">Couleur Sneaker</label> :
+                        <input type="text" placeholder="Ex : Blanche" name="couleurSneaker" id="couleurSneaker" value="<?php echo htmlspecialchars($s->get("couleur_sneaker"));?>" required/>
                 </p>
 
                 <p>
-                        <label for="pointure_sneaker">Pointure Sneaker</label> :
-                        <input type="number" placeholder="Ex : 42" name="pointure_sneaker" id="pointure_sneaker" value="<?php echo htmlspecialchars($s->get("pointure_sneaker"));?>" required/>
+                        <label for="pointureSneaker">Pointure Sneaker</label> :
+                        <input type="number" placeholder="Ex : 42" name="pointureSneaker" id="pointureSneaker" value="<?php echo htmlspecialchars($s->get("pointure_sneaker"));?>" required/>
                 </p>
 
                 <p>
-                        <label for="marque_sneaker">Marque Sneaker</label> :
-                        <input type="text" placeholder="Ex : Adidas" name="marque_sneaker" id="marque_sneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
+                        <label for="marqueSneaker">Marque Sneaker</label> :
+                        <input type="text" placeholder="Ex : Adidas" name="marqueSneaker" id="marqueSneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
                 </p>
 
                 <p>
