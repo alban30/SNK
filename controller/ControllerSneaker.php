@@ -55,7 +55,7 @@ class ControllerSneaker {
                             $view = "update";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::readAll();
@@ -69,7 +69,7 @@ class ControllerSneaker {
             $pagetitle = "Sneaker créée";
             $view = "created";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function update() {
@@ -94,7 +94,7 @@ class ControllerSneaker {
                             $view = "update";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::read();
@@ -108,7 +108,7 @@ class ControllerSneaker {
             $pagetitle = "Sneaker modifiée";
             $view = "updated";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function delete() {
@@ -126,7 +126,7 @@ class ControllerSneaker {
                             $view = "deleted";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::read();

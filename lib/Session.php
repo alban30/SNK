@@ -10,7 +10,7 @@ class Session {
 
     public static function getUserMenu() {
         if(isset($_SESSION['login'])) {
-            echo '<li><a href="index.php?controller=utilisateur&action=deconnect">Déconnexion</a></li>';
+            echo '<li><a href="index.php?controller=utilisateur&action=read&login=' . $_SESSION["login"] . '">Mon compte</a></li><li><a href="index.php?controller=utilisateur&action=deconnect">Déconnexion</a></li>';
         }
         else {
             echo '<li><a href="index.php?controller=utilisateur&action=connect">Connexion</a></li>';

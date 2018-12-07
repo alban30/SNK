@@ -6,72 +6,44 @@ class ControllerUtilisateur {
 	protected static $object = "utilisateur";
 
 	public static function readAll() {
-			$tab_u = ModelUtilisateur::selectAll();     //appel au modèle pour gerer la BD
+			if(Session::is_admin()) {
+					$tab_u = ModelUtilisateur::selectAll();
+					$pagetitle = "Liste d'utilisateurs";
+					$view = "list";
 
-			$pagetitle = "Liste d'utilisateurs";
-			$view = "list";
+					require (File::build_path(array("view", "view.php")));
+			}
+			else {
+				header("Location: index.php");
+			}
 
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
 	}
 
 	public static function read() {
-			$u = ModelUtilisateur::select(myGet("login"));   //appel au modèle pour gerer la BD
+			if(Session::is_admin() || Session::is_user(myGet("login"))) {
+					$u = ModelUtilisateur::select(myGet("login"));
+					$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
 
-			if(!$u) {
-					$pagetitle = "Erreur";
-					$view = "error";
-			}
-			else {
-					$pagetitle = "Affichage d'un utilisateur";
-					$view = "detail";
-					$links = "";
-
-					if(Session::is_Admin()) {
-							$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
+					if(!$u) {
+							$pagetitle = "Erreur";
+							$view = "error";
+							require (File::build_path(array("view", "view.php")));
 					}
 					else {
-							header("Location: index.php");
+							$pagetitle = "Affichage d'un utilisateur";
+							$view = "detail";
 					}
+
+					if(Session::is_admin()) {
+							$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
+					}
+
+					require (File::build_path(array("view", "view.php")));
 			}
-
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+			else {
+					header("Location: index.php");
+			}
 	}
-
-	// public static function read() {
-	// 		if(!Conf::getDebug()) {
-	// 				$method = "post";
-	// 		}
-	// 		else {
-	// 				$method = "get";
-	// 		}
-
-	// 		if(Session::is_user(myGet("login")) || Session::is_admin()) {
-	// 				$u = ModelUtilisateur::select(myGet("login"));
-
-	// 				if(!$u) {
-	// 						$pagetitle = "Erreur";
-	// 						$view = "error";
-	// 				}
-	// 				else {
-	// 						$pagetitle = "Affichage d'un utilisateur";
-	// 						$view = "detail";
-	// 						$links = "";
-	// 				}
-
-	// 				if(Session::is_Admin()) {
-	// 						$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
-	// 				}
-	// 				else {
-	// 						self::readAll();
-	// 				}
-	// 		}
-	// 		else {
-	// 				$pagetitle = "Erreur";
-	// 				$view = "error";
-	// 		}
-
-	// 		require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
-	// }
 
 	public static function create() {
 			$u = new ModelUtilisateur();
@@ -94,7 +66,7 @@ class ControllerUtilisateur {
 					$view = "update";
 			}
 
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+			require (File::build_path(array("view", "view.php")));
 	}
 
 	public static function created() {
@@ -114,7 +86,7 @@ class ControllerUtilisateur {
 			}
 			$tab_u = ModelUtilisateur::selectAll();
 
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+			require (File::build_path(array("view", "view.php")));
 	}
 
 	public static function update() {
@@ -144,7 +116,7 @@ class ControllerUtilisateur {
 					$view = "error";
 			}
 
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+			require (File::build_path(array("view", "view.php")));
 	}
 
 	public static function updated() {
@@ -173,7 +145,7 @@ class ControllerUtilisateur {
 
 			$tab_u = ModelUtilisateur::selectAll();
 
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+			require (File::build_path(array("view", "view.php")));
 	}
 
 	public static function delete() {
@@ -194,11 +166,12 @@ class ControllerUtilisateur {
 					if($login == $_SESSION["login"]) {
 						self::deconnect();
 					}
+
+					require (File::build_path(array("view", "view.php")));
 			}
 			else {
 					header("Location: index.php");
 			}
-			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
 	}
 
 	public static function connect() {
@@ -228,12 +201,11 @@ class ControllerUtilisateur {
 	}
 
 	public static function deconnect() {
-			session_unset();     // unset $_SESSION variable for the run-time
-			session_destroy();   // destroy session data in storage
-			// Il faut réappeler session_start() pour accéder de nouveau aux variables de session
-			setcookie(session_name(), "", time()-1); // deletes the session cookie containing the session ID
+			session_unset();
+			session_destroy();
+			setcookie(session_name(), "", time() - 1);
 
-			header("Location: index.php");
+			self::connect();
 	}
 
 	public static function validate() {

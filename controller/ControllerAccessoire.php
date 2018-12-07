@@ -55,7 +55,7 @@ class ControllerAccessoire {
                             $view = "update";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::readAll();
@@ -94,7 +94,7 @@ class ControllerAccessoire {
                             $view = "update";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::read();
@@ -126,7 +126,7 @@ class ControllerAccessoire {
                             $view = "deleted";
                     }
 
-                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+                    require (File::build_path(array("view", "view.php")));
             }
             else {
                     self::read();
