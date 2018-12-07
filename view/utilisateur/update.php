@@ -1,4 +1,6 @@
-<form method="<?php echo $method; ?>" action="index.php?controller=utilisateur&action=<?php echo $target_action;?>">
+<form method="<?php echo $method; ?>" action="index.php">
+        <input type="hidden" name="controller" value="<?php echo static::$object;?>">
+        <input type="hidden" name="action" value="<?php echo $target_action;?>">
         <fieldset>
                 <legend>Mon formulaire :</legend>
                 <p>
@@ -43,7 +45,6 @@ EOT;
                 ?>
 
                 <p>
-                    <input type="hidden" value="<?php echo static::$object;?>" />
                     <input type="submit" value="Envoyer" />
                 </p>
         </fieldset>
