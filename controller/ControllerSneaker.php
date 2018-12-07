@@ -17,44 +17,49 @@ class ControllerSneaker {
             $s = ModelSneaker::select(myGet("idSneaker"));   //appel au modèle pour gerer la BD
 
             if(!$s) {
-                $pagetitle = "Erreur";
-                $view = "error";
+                    $pagetitle = "Erreur";
+                    $view = "error";
             }
             else {
-                $pagetitle = "Affichage d'une sneaker";
-                $view = "detail";
-                $links = "";
+                    $pagetitle = "Affichage d'une sneaker";
+                    $view = "detail";
+                    $links = "";
 
-                if(Session::is_Admin()) {
-                        $links = '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . htmlspecialchars($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
-                }
+                    if(Session::is_Admin()) {
+                            $links = '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
+                    }
             }
             
             require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function create() {
-            $s = new ModelSneaker();
-            $modifier = "required";
-            $target_action = "created";
+            if(Session::is_admin()) {
+                    $s = new ModelSneaker();
+                    $modifier = "required";
+                    $target_action = "created";
 
-            if(!Conf::getDebug()) {
-                    $method = "post";
+                    if(!Conf::getDebug()) {
+                            $method = "post";
+                    }
+                    else {
+                            $method = "get";
+                    }
+
+                    if(!$s) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Modification d'un utilisateur'";
+                            $view = "update";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    $method = "get";
+                    header("Location: index.php");
             }
-
-            if(!$s) {
-                $pagetitle = "Erreur";
-                $view = "error";
-            }
-            else {
-                $pagetitle = "Création d'une sneaker";
-                $view = "update";
-            }
-
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function created() {
@@ -68,27 +73,32 @@ class ControllerSneaker {
     }
 
     public static function update() {
-            $s = ModelSneaker::select(myGet("idSneaker"));
-            $modifier = "readonly";
-            $target_action = "updated";
+            if(Session::is_admin()) {
+                    $s = ModelSneaker::select(myGet("idSneaker"));
+                    $modifier = "readonly";
+                    $target_action = "updated";
 
-            if(!Conf::getDebug()) {
-                    $method = "post";
+                    if(!Conf::getDebug()) {
+                            $method = "post";
+                    }
+                    else {
+                            $method = "get";
+                    }
+
+                    if(!$s) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Modification d'une sneaker";
+                            $view = "update";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    $method = "get";
+                    header("Location: index.php");
             }
-
-            if(!$s) {
-                $pagetitle = "Erreur";
-                $view = "error";
-            }
-            else {
-                $pagetitle = "Modification d'une sneaker";
-                $view = "update";
-            }
-
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
     }
 
     public static function updated() {
@@ -107,15 +117,42 @@ class ControllerSneaker {
             $tab_s = ModelSneaker::selectAll();
 
             if(!$idSneaker) {
-                $pagetitle = "Erreur";
-                $view = "error";
+                    $pagetitle = "Erreur";
+                    $view = "error";
             }
             else {
-                $pagetitle = "Suppression d'une sneaker";
-                $view = "deleted";
+                    $pagetitle = "Suppression d'une sneaker";
+                    $view = "deleted";
             }
             
             require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+
+            if(Session::is_admin()) {
+                    $idSneaker = myGet("idSneaker");
+                    ModelSneaker::delete($idSneaker);
+                    $tab_s = ModelSneaker::selectAll();
+
+                    if(!Conf::getDebug()) {
+                            $method = "post";
+                    }
+                    else {
+                            $method = "get";
+                    }
+
+                    if(!$s) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Modification d'un utilisateur'";
+                            $view = "update";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+            }
+            else {
+                    header("Location: index.php");
+            }
     }
 }
 ?>

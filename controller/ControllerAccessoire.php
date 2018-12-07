@@ -17,17 +17,17 @@ class ControllerAccessoire {
             $a = ModelAccessoire::select(myGet("idAccessoire"));   //appel au modèle pour gerer la BD
 
             if(!$a) {
-                $pagetitle = "Erreur";
-                $view = "error";
+                    $pagetitle = "Erreur";
+                    $view = "error";
             }
             else {
-                $pagetitle = "Affichage d'un accessoire";
-                $view = "detail";
-                $links = "";
-
-                if(Session::is_Admin()) {
-                        $links = '<a style="margin-right: 1%" href="index.php?controller=accessoire&action=delete&idAccessoire=' . htmlspecialchars($a->get("id_accessoire")) . '">Supprimer cet accessoire</a><a style="margin-right: 1%" href="index.php?controller=accessoire&action=update&idAccessoire=' . htmlspecialchars($a->get("id_accessoire")) . '">Modifier cet accessoire</a>';
-                }
+                    $pagetitle = "Affichage d'un accessoire";
+                    $view = "detail";
+                    $links = "";
+                    
+                    if(Session::is_Admin()) {
+                            $links = '<a style="margin-right: 1%" href="index.php?controller=accessoire&action=delete&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '">Supprimer cet accessoire</a><a style="margin-right: 1%" href="index.php?controller=accessoire&action=update&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '">Modifier cet accessoire</a>';
+                    }
             }
             
             require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue

@@ -26,9 +26,12 @@ class ControllerUtilisateur {
 					$view = "detail";
 					$links = "";
 
-                    if(Session::isAdmin()) {
-                        	$links = '<a style="margin-right: 1%" href="index.php?action=update&controller=product&controller=product&reference=' . rawurlencode($i->get('reference')) . '">Mettre a jour ce produit</a><a style="margin-right: 1%" href="index.php?action=deleted&controller=product&reference=' . rawurlencode($i->get('reference')) . '">Supprimer ce produit</a>';
-                    }
+					if(Session::is_Admin()) {
+							$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
+					}
+					else {
+							header("Location: index.php");
+					}
 			}
 
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
@@ -59,21 +62,15 @@ class ControllerUtilisateur {
 	}
 
 	public static function created() {
-			if(myGet("mdp") == myGet("mdpc")) {
-					if(filter_var(myGet("email"), FILTER_VALIDATE_EMAIL)) {
-							$nonce = Security::generateRandomHex();
-							ModelUtilisateur::save(array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
+			if(myGet("mdp") == myGet("mdpc") && filter_var(myGet("email"), FILTER_VALIDATE_EMAIL)) {
+					$nonce = Security::generateRandomHex();
+					ModelUtilisateur::save(array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
 
-							$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/TD/PHP/TD8/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
-							mail(myGet("email"), "Inscription - Blablacar", $mail);
+					$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
+					mail(myGet("email"), "Inscription - Blablacar", $mail);
 
-							$pagetitle = "Utilisateur créé";
-							$view = "created";
-					}
-					else {
-							$pagetitle = "Erreur";
-							$view = "error";
-					}
+					$pagetitle = "Utilisateur créé";
+					$view = "created";
 			}
 			else {
 					$pagetitle = "Erreur";
@@ -84,35 +81,34 @@ class ControllerUtilisateur {
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
 	}
 
-		public static function update() {
-				if(Session::is_user(myGet("login")) || Session::is_admin()) {
-						$u = ModelUtilisateur::select(myGet("login"));
-						$modifier = "readonly";
-						$target_action = "updated";
+	public static function update() {
+			if(Session::is_user(myGet("login")) || Session::is_admin()) {
+					$u = ModelUtilisateur::select(myGet("login"));
+					$modifier = "readonly";
+					$target_action = "updated";
 
-						if(!Conf::getDebug()) {
-								$method = "post";
-						}
-						else {
-								$method = "get";
-						}
+					if(!Conf::getDebug()) {
+							$method = "post";
+					}
+					else {
+							$method = "get";
+					}
 
-						if(!$u) {
-								$pagetitle = "Erreur";
-								$view = "error";
-						}
-						else {
-								$pagetitle = "Modification d'un utilisateur";
-								$view = "update";
-						}
+					if(!$u) {
+							$pagetitle = "Erreur";
+							$view = "error";
+					}
+					else {
+							$pagetitle = "Modification d'un utilisateur";
+							$view = "update";
+					}
+			}
+			else {
+					$pagetitle = "Erreur";
+					$view = "error";
+			}
 
-						require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
-				}
-				else {
-						$pagetitle = "Erreur";
-						$view = "error";
-						require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
-				}
+			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
 	}
 
 	public static function updated() {
@@ -129,33 +125,43 @@ class ControllerUtilisateur {
 					else {
 							$update = array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp"=>Security::chiffrer(myGet("mdp")));
 					}
-			ModelUtilisateur::update($update);
-			$pagetitle = "Utilisateur modifié";
-			$view = "updated";
+
+					ModelUtilisateur::update($update);
+					$pagetitle = "Utilisateur modifié";
+					$view = "updated";
 			}
 			else {
 					$pagetitle = "Erreur";
 					$view = "error";
 			}
+
 			$tab_u = ModelUtilisateur::selectAll();
 
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
 	}
 
 	public static function delete() {
-			$login = myGet("login");
-			ModelUtilisateur::delete($login);
-			$tab_u = ModelUtilisateur::selectAll();
+			if(Session::is_admin()) {
+					$login = myGet("login");
+					ModelUtilisateur::delete($login);
+					$tab_u = ModelUtilisateur::selectAll();
 
-			if(!$login) {
-					$pagetitle = "Erreur";
-					$view = "error";
+					if(!$login) {
+							$pagetitle = "Erreur";
+							$view = "error";
+					}
+					else {
+							$pagetitle = "Suppression d'un utilisateur";
+							$view = "deleted";
+					}
+
+					if($login == $_SESSION["login"]) {
+						self::deconnect();
+					}
 			}
 			else {
-					$pagetitle = "Suppression d'un utilisateur";
-					$view = "deleted";
+					header("Location: index.php");
 			}
-
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
 	}
 

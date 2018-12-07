@@ -14,14 +14,9 @@ function myGet($nomVar) {
 		else {
 				return false;
 		}
+}
 
-}
-if(isset($_COOKIE["Preference"])) {
-		$controler_default = $_COOKIE["Preference"];
-}
-else {
-		$controler_default = "accueil";
-}
+$controler_default = "accueil";
 
 if(myGet("controller") != false) {
 		$controller = myGet("controller");
