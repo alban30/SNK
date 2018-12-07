@@ -20,7 +20,7 @@
 
                 <p>
                         <label for="email">Email</label> :
-                        <input type="email" placeholder="hello@gmail.com" name="email" id="email" required/>
+                        <input type="email" placeholder="hello@gmail.com" name="email" id="email" value="<?php echo htmlspecialchars($u->get("email"));?>" required/>
                 </p>
 
                 <p>
