@@ -41,11 +41,9 @@ class ControllerUtilisateur {
 
 			if(!Conf::getDebug()) {
 					$method = "post";
-					echo $method;
 			}
 			else {
 					$method = "get";
-					echo $method;
 			}
 
 			if(!$u) {
