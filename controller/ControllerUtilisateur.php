@@ -220,6 +220,7 @@ class ControllerUtilisateur {
 					if(isset($_SESSION["login"]) && $user->get("admin") == 1) {
 							$_SESSION["admin"] = true;
 					}
+					header("Location: index.php");
 			}
 			else {
 					self::connect();
