@@ -1,20 +1,20 @@
 <?php
-require_once (File::build_path(array("model", "ModelAccessoire.php"))); // chargement du modèle
+require_once (File::build_path(array("model", "ModelAccessoire.php")));
 
 class ControllerAccessoire {
     protected static $object = "accessoire";
 
     public static function readAll() {
-            $tab_a = ModelAccessoire::selectAll();     //appel au modèle pour gerer la BD
+            $tab_a = ModelAccessoire::selectAll();
 
             $pagetitle = "Liste des accessoires";
             $view = "list";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function read() {
-            $a = ModelAccessoire::select(myGet("idAccessoire"));   //appel au modèle pour gerer la BD
+            $a = ModelAccessoire::select(myGet("idAccessoire"));
 
             if(!$a) {
                     $pagetitle = "Erreur";
@@ -30,31 +30,36 @@ class ControllerAccessoire {
                     }
             }
             
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function create() {
-            $a = new ModelAccessoire();
-            $modifier = "required";
-            $target_action = "created";
+            if(Session::is_admin()) {
+                    $a = new ModelAccessoire();
+                    $modifier = "required";
+                    $target_action = "created";
 
-            if(!Conf::getDebug()) {
-                    $method = "post";
+                    if(!Conf::getDebug()) {
+                            $method = "post";
+                    }
+                    else {
+                            $method = "get";
+                    }
+
+                    if(!$a) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Modification d'un accessoire";
+                            $view = "update";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    $method = "get";
+                    self::readAll();
             }
-
-            if(!$a) {
-                $pagetitle = "Erreur";
-                $view = "error";
-            }
-            else {
-                $pagetitle = "Création d'un accessoire";
-                $view = "update";
-            }
-
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
     }
 
     public static function created() {
@@ -64,31 +69,36 @@ class ControllerAccessoire {
             $pagetitle = "Accessoire créé";
             $view = "created";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function update() {
-            $a = ModelAccessoire::select(myGet("idAccessoire"));
-            $modifier = "readonly";
-            $target_action = "updated";
+            if(Session::is_admin()) {
+                    $a = ModelAccessoire::select(myGet("idAccessoire"));
+                    $modifier = "readonly";
+                    $target_action = "updated";
 
-            if(!Conf::getDebug()) {
-                    $method = "post";
+                    if(!Conf::getDebug()) {
+                            $method = "post";
+                    }
+                    else {
+                            $method = "get";
+                    }
+
+                    if(!$a) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Modification d'un accessoire";
+                            $view = "update";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    $method = "get";
+                    self::read();
             }
-
-            if(!$a) {
-                $pagetitle = "Erreur";
-                $view = "error";
-            }
-            else {
-                $pagetitle = "Modification d'un accessoire";
-                $view = "update";
-            }
-
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
     }
 
     public static function updated() {
@@ -98,24 +108,29 @@ class ControllerAccessoire {
             $pagetitle = "Accessoire modifié";
             $view = "updated";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function delete() {
-            $idAccessoire = myGet("idAccessoire");
-            ModelAccessoire::delete($idAccessoire);
-            $tab_a = ModelAccessoire::selectAll();
+            if(Session::is_admin()) {
+                    $idAccessoire = myGet("idAccessoire");
+                    ModelAccessoire::delete($idAccessoire);
+                    $tab_a = ModelAccessoire::selectAll();
 
-            if(!$idAccessoire) {
-                $pagetitle = "Erreur";
-                $view = "error";
+                    if(!$idAccessoire) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Suppression d'un accessoire";
+                            $view = "deleted";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                $pagetitle = "Suppression d'un accessoire";
-                $view = "deleted";
+                    self::read();
             }
-            
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
     }
 }
 ?>

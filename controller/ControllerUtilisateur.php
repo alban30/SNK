@@ -37,6 +37,42 @@ class ControllerUtilisateur {
 			require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
 	}
 
+	// public static function read() {
+	// 		if(!Conf::getDebug()) {
+	// 				$method = "post";
+	// 		}
+	// 		else {
+	// 				$method = "get";
+	// 		}
+
+	// 		if(Session::is_user(myGet("login")) || Session::is_admin()) {
+	// 				$u = ModelUtilisateur::select(myGet("login"));
+
+	// 				if(!$u) {
+	// 						$pagetitle = "Erreur";
+	// 						$view = "error";
+	// 				}
+	// 				else {
+	// 						$pagetitle = "Affichage d'un utilisateur";
+	// 						$view = "detail";
+	// 						$links = "";
+	// 				}
+
+	// 				if(Session::is_Admin()) {
+	// 						$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
+	// 				}
+	// 				else {
+	// 						self::readAll();
+	// 				}
+	// 		}
+	// 		else {
+	// 				$pagetitle = "Erreur";
+	// 				$view = "error";
+	// 		}
+
+	// 		require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
+	// }
+
 	public static function create() {
 			$u = new ModelUtilisateur();
 			$modifier = "required";
@@ -177,7 +213,7 @@ class ControllerUtilisateur {
 			$user = ModelUtilisateur::select(myGet("login"));
 			$bool = ModelUtilisateur::checkPassword(myGet("login"), Security::chiffrer(myGet("mdp")));
 
-			if($user->get("nonce") == NULL) {
+			if($user && $user->get("nonce") == NULL) {
 					if($bool) {
 							$_SESSION["login"] = myGet("login");
 					}
@@ -185,8 +221,9 @@ class ControllerUtilisateur {
 							$_SESSION["admin"] = true;
 					}
 			}
-
-			header("Location: index.php");
+			else {
+					self::connect();
+			}
 	}
 
 	public static function deconnect() {

@@ -5,16 +5,16 @@ class ControllerSneaker {
     protected static $object = "sneaker";
 
     public static function readAll() {
-            $tab_s = ModelSneaker::selectAll();     //appel au modèle pour gerer la BD
+            $tab_s = ModelSneaker::selectAll();
 
             $pagetitle = "Liste des sneakers";
             $view = "list";
 
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function read() {
-            $s = ModelSneaker::select(myGet("idSneaker"));   //appel au modèle pour gerer la BD
+            $s = ModelSneaker::select(myGet("idSneaker"));
 
             if(!$s) {
                     $pagetitle = "Erreur";
@@ -30,7 +30,7 @@ class ControllerSneaker {
                     }
             }
             
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
+            require (File::build_path(array("view", "view.php")));
     }
 
     public static function create() {
@@ -51,14 +51,14 @@ class ControllerSneaker {
                             $view = "error";
                     }
                     else {
-                            $pagetitle = "Modification d'un utilisateur'";
+                            $pagetitle = "Modification d'une sneaker";
                             $view = "update";
                     }
 
                     require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    header("Location: index.php");
+                    self::readAll();
             }
     }
 
@@ -97,7 +97,7 @@ class ControllerSneaker {
                     require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    header("Location: index.php");
+                    self::read();
             }
     }
 
@@ -112,46 +112,24 @@ class ControllerSneaker {
     }
 
     public static function delete() {
-            $idSneaker = myGet("idSneaker");
-            ModelSneaker::delete($idSneaker);
-            $tab_s = ModelSneaker::selectAll();
-
-            if(!$idSneaker) {
-                    $pagetitle = "Erreur";
-                    $view = "error";
-            }
-            else {
-                    $pagetitle = "Suppression d'une sneaker";
-                    $view = "deleted";
-            }
-            
-            require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
-
             if(Session::is_admin()) {
                     $idSneaker = myGet("idSneaker");
                     ModelSneaker::delete($idSneaker);
                     $tab_s = ModelSneaker::selectAll();
 
-                    if(!Conf::getDebug()) {
-                            $method = "post";
-                    }
-                    else {
-                            $method = "get";
-                    }
-
-                    if(!$s) {
+                    if(!$idSneaker) {
                             $pagetitle = "Erreur";
                             $view = "error";
                     }
                     else {
-                            $pagetitle = "Modification d'un utilisateur'";
-                            $view = "update";
+                            $pagetitle = "Suppression d'une sneaker";
+                            $view = "deleted";
                     }
 
                     require (File::build_path(array("view", "view.php")));  //"redirige" vers la vues
             }
             else {
-                    header("Location: index.php");
+                    self::read();
             }
     }
 }
