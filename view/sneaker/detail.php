@@ -1,5 +1,8 @@
 <?php
-echo $links;
+if(Session::is_admin()) {
+    echo '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
+}
+
 $id_sneaker_html = htmlspecialchars($s->get("id_sneaker"));
 $nom_sneaker_html = htmlspecialchars($s->get("nom_sneaker"));
 $prix_sneaker_html = htmlspecialchars($s->get("prix_sneaker"));

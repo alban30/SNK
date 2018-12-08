@@ -23,13 +23,8 @@ class ControllerSneaker {
             else {
                     $pagetitle = "Affichage d'une sneaker";
                     $view = "detail";
-                    $links = "";
-
-                    if(Session::is_Admin()) {
-                            $links = '<a style="margin-right: 1%" href="index.php?controller=sneaker&action=delete&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Supprimer cette sneaker</a><a style="margin-right: 1%" href="index.php?controller=sneaker&action=update&idSneaker=' . rawurlencode($s->get("id_sneaker")) . '">Modifier cette sneaker</a>';
-                    }
             }
-            
+
             require (File::build_path(array("view", "view.php")));
     }
 

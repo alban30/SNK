@@ -24,12 +24,8 @@ class ControllerAccessoire {
                     $pagetitle = "Affichage d'un accessoire";
                     $view = "detail";
                     $links = "";
-                    
-                    if(Session::is_Admin()) {
-                            $links = '<a style="margin-right: 1%" href="index.php?controller=accessoire&action=delete&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '">Supprimer cet accessoire</a><a style="margin-right: 1%" href="index.php?controller=accessoire&action=update&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '">Modifier cet accessoire</a>';
-                    }
             }
-            
+
             require (File::build_path(array("view", "view.php")));
     }
 

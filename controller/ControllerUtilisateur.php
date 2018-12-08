@@ -80,7 +80,6 @@ class ControllerUtilisateur {
 	}
 
 	public static function update() {
-			echo $_SESSION["login"];
 			if(Session::is_user(myGet("login")) || Session::is_admin()) {
 					$u = ModelUtilisateur::select(myGet("login"));
 					$modifier = "readonly";

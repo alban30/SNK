@@ -1,5 +1,5 @@
 <?php
-if(Session::is_user($_SESSION["login"])) {
+if(Session::is_user($_SESSION["login"]) && !Session::is_admin()) {
     echo '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
 }
 if(Session::is_admin()) {
