@@ -117,21 +117,22 @@ body {
     font-family: "Alegreya", Arial;
     color: #fff;
     text-decoration: none;
-    justify-content: center;
+  }
+
+  .right {
+
   }
 
   .social {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
   }
 
   .menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    font-size: .8em;
   }
 
   .top {
@@ -151,7 +152,6 @@ body {
     width: 1em;
     margin-left: 4px;
     margin-right: 4px;
-    padding-top: 10px;
     border-radius: 50px;
     border: 0;
     transition: background-color 0.3s;
