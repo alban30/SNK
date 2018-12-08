@@ -62,5 +62,4 @@ class ModelUtilisateur extends Model {
 					die();
 			}
 	}
-
 }

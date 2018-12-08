@@ -7,5 +7,4 @@ class File {
         return self::ROOT_FOLDER . self::DS . join(self::DS, $path_array);
     }
 }
-
 ?>

@@ -30,6 +30,5 @@ class ModelAccessoire extends Model {
                     $this->$marque_accessoire = $data("marque_accessoire");
             }
     }
-
 }
 ?>

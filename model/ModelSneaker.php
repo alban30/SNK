@@ -34,6 +34,5 @@ class ModelSneaker extends Model {
                     $this->$marque_sneaker = $data("marque_sneaker");
             }
     }
-
 }
 ?>

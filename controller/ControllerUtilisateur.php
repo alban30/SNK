@@ -16,33 +16,23 @@ class ControllerUtilisateur {
 			else {
 				header("Location: index.php");
 			}
-
 	}
 
 	public static function read() {
-			if(Session::is_admin() || Session::is_user(myGet("login"))) {
-					$u = ModelUtilisateur::select(myGet("login"));
-					$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
+			$u = ModelUtilisateur::select(myGet("login"));
+			$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
 
-					if(!$u) {
-							$pagetitle = "Erreur";
-							$view = "error";
-							require (File::build_path(array("view", "view.php")));
-					}
-					else {
-							$pagetitle = "Affichage d'un utilisateur";
-							$view = "detail";
-					}
-
-					if(Session::is_admin()) {
-							$links = '<a style="margin-right: 1%" href="index.php?controller=utilisateur&action=delete&login=' . rawurlencode($u->get("login")) . '">Supprimer cet utilisateur</a><a style="margin-right: 1%" href="index.php?controller=utilisateur&action=update&login=' . rawurlencode($u->get("login")) . '">Modifier cet utilisateur</a>';
-					}
-
+			if(!$u) {
+					$pagetitle = "Erreur";
+					$view = "error";
 					require (File::build_path(array("view", "view.php")));
 			}
 			else {
-					header("Location: index.php");
+					$pagetitle = "Affichage d'un utilisateur";
+					$view = "detail";
 			}
+
+			require (File::build_path(array("view", "view.php")));
 	}
 
 	public static function create() {
@@ -72,7 +62,7 @@ class ControllerUtilisateur {
 	public static function created() {
 			if(myGet("mdp") == myGet("mdpc") && filter_var(myGet("email"), FILTER_VALIDATE_EMAIL)) {
 					$nonce = Security::generateRandomHex();
-					ModelUtilisateur::save(array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
+					ModelUtilisateur::save(array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
 
 					$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
 					mail(myGet("email"), "Inscription - Blablacar", $mail);
@@ -90,6 +80,7 @@ class ControllerUtilisateur {
 	}
 
 	public static function update() {
+			echo $_SESSION["login"];
 			if(Session::is_user(myGet("login")) || Session::is_admin()) {
 					$u = ModelUtilisateur::select(myGet("login"));
 					$modifier = "readonly";
@@ -128,10 +119,10 @@ class ControllerUtilisateur {
 							else {
 									$admin = 0;
 							}
-							$update = array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp"=>Security::chiffrer(myGet("mdp")), "admin"=>$admin);
+							$update = array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp"=>Security::chiffrer(myGet("mdp")), "admin"=>$admin);
 					}
 					else {
-							$update = array("login" => myGet("login"), "nom" => myGet("nom"), "prenom" => myGet("prenom"), "email" => myGet("email"), "mdp"=>Security::chiffrer(myGet("mdp")));
+							$update = array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp"=>Security::chiffrer(myGet("mdp")));
 					}
 
 					ModelUtilisateur::update($update);
@@ -142,8 +133,7 @@ class ControllerUtilisateur {
 					$pagetitle = "Erreur";
 					$view = "error";
 			}
-
-			$tab_u = ModelUtilisateur::selectAll();
+			$u = ModelUtilisateur::select(myGet("login"));
 
 			require (File::build_path(array("view", "view.php")));
 	}
@@ -188,7 +178,7 @@ class ControllerUtilisateur {
 
 			if($user && $user->get("nonce") == NULL) {
 					if($bool) {
-							$_SESSION["login"] = myGet("login");
+							$_SESSION["login"] = ucfirst(myGet("login"));
 					}
 					if(isset($_SESSION["login"]) && $user->get("admin") == 1) {
 							$_SESSION["admin"] = true;
