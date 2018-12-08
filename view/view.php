@@ -26,6 +26,9 @@
                     <li>
                         <a href="index.php?controller=accessoire&action=readAll">Pannier</a>
                     </li>
+                    <li>
+                        <a href="index.php?controller=commande&action=readAll">Commandes</a>
+                    </li>
                     <?php Session::getUserMenu(); ?>;
             </nav>
         </header>
