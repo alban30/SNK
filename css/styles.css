@@ -11,22 +11,22 @@
 
 @font-face {
   font-family: 'Alegreya';
-  src: url('../font/Alegreya/AlegreyaSansSC-Regular.ttf');
+  src: url('../font/AlegreyaSansSC-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url("../font/Lato/Lato-Semibold.ttf");
+    src: url("../font/Lato-Semibold.ttf");
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url("../font/Montserrat/Montserrat-Regular.ttf");
+  src: url("../font/Montserrat-Regular.ttf");
 }
 
 @font-face {
   font-family: 'Lilita';
-  src: url("../font/Lilita/LilitaOne-Regular.ttf");
+  src: url("../font/LilitaOne-Regular.ttf");
 }
 
 
@@ -104,6 +104,8 @@ body {
 
 @media(max-width:2000px) { /* 1051 */
   header a {
+    font-family: "Alegreya", Arial;
+    color: #fff;
     text-decoration: none;
   }
 
@@ -117,15 +119,9 @@ body {
     list-style-type: none;
   }
 
-  header ul li a {
-    font-family: "Alegreya", Arial;
-    color: #fff;
-    text-decoration: none;
-  }
-
   .right {
     width: 100%;
-    margin-right: 10%;
+    margin-right: 5em;
     justify-content: flex-end;
   }
 
@@ -137,6 +133,7 @@ body {
     display: flex;
     align-items: center;
     padding-left: 35px;
+    padding-top: .1em;
   }
 
   .menu {
@@ -158,17 +155,13 @@ body {
 
   .top .social a img {
     width: 1em;
-    border-radius: 50px;
-    border: 0;
-    transition: background-color 0.3s;
   }
 
   .primary {
     display: flex;
     height: 7vh;
-    font-size: 16px;
+    font-size: 18px;
     background: #161616;
-    padding: .3em;
     border-bottom: 8px solid rgba(0,0,0,0.1);
   }
 
@@ -178,10 +171,9 @@ body {
     margin-left: 2em;
   }
 
-  .primary ul li a {
+  .primary li {
     display: block;
-    padding: .5em 1em;
-    margin: .8em;
+    margin-left: 4em;
   }
 
   .primary ul.menu {
