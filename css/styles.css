@@ -109,6 +109,10 @@ body {
     padding-left: 0;
   }
 
+  header li {
+    list-style-type: none;
+  }
+
   header ul li a {
     font-family: "Alegreya", Arial;
     color: #fff;
@@ -116,8 +120,18 @@ body {
     justify-content: center;
   }
 
-  header li {
-    list-style-type: none;
+  .social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .top {
@@ -171,8 +185,6 @@ body {
     align-items: center;
     justify-content: flex-end;
   }
-
-
 
   .primary ul.btw {
     margin-bottom: 0em;
