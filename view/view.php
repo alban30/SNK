@@ -9,10 +9,10 @@
         <header>
             <nav>
                 <div class="top">
-                    <a>CCCccccccc</a>
+                    <a>3630</a>
                 </div>
                 <div class="primary">
-                    <a><img alt="Salut" src="img/logo.jpg"/></a>
+                    <a><img alt="Salut" src="img/logo.png"/></a>
                     <ul class="btw">
                         <li>
                             <a class="ici" href="index.php">Accueil</a>
