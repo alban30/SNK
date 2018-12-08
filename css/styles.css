@@ -103,6 +103,10 @@ body {
 /*-------- 2. NAVBAR --------*/
 
 @media(max-width:2000px) { /* 1051 */
+  header a {
+    text-decoration: none;
+  }
+
   header ul {
     list-style: none;
     margin-left: 0;
@@ -120,6 +124,12 @@ body {
   }
 
   .right {
+    width: 100%;
+    margin-right: 10%;
+    justify-content: flex-end;
+  }
+
+  .left {
 
   }
 
@@ -137,15 +147,12 @@ body {
 
   .top {
     display: flex;
+    height: 3vh;
     background: #161616;
   }
 
   .top a:first-child {
     padding-left: 50px;
-  }
-
-  .top a {
-    text-decoration: none;
   }
 
   .top .social a img {
@@ -159,6 +166,7 @@ body {
 
   .primary {
     display: flex;
+    height: 7vh;
     background: #161616;
     padding: .3em;
     border-bottom: 8px solid rgba(0,0,0,0.1);
