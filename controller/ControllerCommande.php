@@ -72,45 +72,6 @@ class ControllerCommande {
             require (File::build_path(array("view", "view.php")));
     }
 
-    public static function update() {
-            if(Session::is_admin()) {
-                    $c = ModelCommande::select(myGet("idCommande"));
-                    $modifier = "readonly";
-                    $target_action = "updated";
-
-                    if(!Conf::getDebug()) {
-                            $method = "post";
-                    }
-                    else {
-                            $method = "get";
-                    }
-
-                    if(!$s) {
-                            $pagetitle = "Erreur";
-                            $view = "error";
-                    }
-                    else {
-                            $pagetitle = "Modification d'une commande";
-                            $view = "update";
-                    }
-
-                    require (File::build_path(array("view", "view.php")));
-            }
-            else {
-                    self::read();
-            }
-    }
-
-    public static function updated() {
-            ModelCommande::update(array("id_commande"=>myGet("idCommande"), "nom_sneaker"=>myGet("nomSneaker"), "marque_sneaker"=>myGet("marqueSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "login"=>myGet("login"), "nom"=>myGet("nom"), "prenom"=>myGet("prenom")));
-            $tab_c = ModelCommande::selectAll();
-
-            $pagetitle = "Commande modifiée";
-            $view = "updated";
-
-            require (File::build_path(array("view", "view.php")));
-    }
-
     public static function delete() {
             if(Session::is_admin()) {
                     $idCommande = myGet("idCommande");

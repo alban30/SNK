@@ -1,6 +1,6 @@
 <?php
 if(Session::is_admin()) {
-    echo '<a style="margin-right: 1%" href="index.php?controller=commande&action=delete&idCommande=' . rawurlencode($c->get("id_commande")) . '">Supprimer cette commande</a><a style="margin-right: 1%" href="index.php?controller=commande&action=update&idCommande=' . rawurlencode($c->get("id_commande")) . '">Modifier cette commande</a>';
+    echo '<a style="margin-right: 1%" href="index.php?controller=commande&action=delete&idCommande=' . rawurlencode($c->get("id_commande")) . '">Supprimer cette commande</a>';
 }
 
 $id_commande_html = htmlspecialchars($c->get("id_commande"));
