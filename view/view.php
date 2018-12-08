@@ -28,7 +28,7 @@
                     </ul>
                     <ul class="menu left">
                         <li>
-                            <a>0647857007</a>
+                            <a>3630</a>
                         </li>
                     </ul>
                     <ul class="menu right">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="primary">
                     <a><img alt="Salut" src="img/logo.png"/></a>
-                    <ul class="btw">
+                    <ul class="menu right">
                         <li>
                             <a class="ici" href="index.php">Accueil</a>
                         </li>
@@ -49,6 +49,9 @@
                         </li>
                         <li>
                             <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=accessoire&action=readAll">Contact</a>
                         </li>
                     </ul>
                 </div>

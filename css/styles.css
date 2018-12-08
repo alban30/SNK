@@ -136,29 +136,28 @@ body {
   .social {
     display: flex;
     align-items: center;
+    padding-left: 35px;
   }
 
   .menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: .8em;
   }
 
   .top {
     display: flex;
     height: 3vh;
+    font-size: 14px;
     background: #161616;
   }
 
-  .top a:first-child {
-    padding-left: 50px;
+  .top li {
+    margin-right: 20px;
   }
 
   .top .social a img {
     width: 1em;
-    margin-left: 4px;
-    margin-right: 4px;
     border-radius: 50px;
     border: 0;
     transition: background-color 0.3s;
@@ -167,6 +166,7 @@ body {
   .primary {
     display: flex;
     height: 7vh;
+    font-size: 16px;
     background: #161616;
     padding: .3em;
     border-bottom: 8px solid rgba(0,0,0,0.1);
@@ -180,21 +180,11 @@ body {
 
   .primary ul li a {
     display: block;
-    font-size: 16px;
     padding: .5em 1em;
     margin: .8em;
   }
 
-  .primary .btw {
-    width: 100%;
-    margin-right: 10%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .primary ul.btw {
+  .primary ul.menu {
     margin-bottom: 0em;
     margin-top: 0em;
   }
