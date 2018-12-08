@@ -9,7 +9,34 @@
         <header>
             <nav>
                 <div class="top">
-                    <a>3630</a>
+                    <ul class="social left">
+                        <li>
+                          <a href="https://www.facebook.com/" target="_blank">
+                              <img class="social" src="img/icon/facebook.png" alt="fb">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://twitter.com/" target="_blank">
+                              <img class="social" src="img/icon/twitter.png" alt="twitter">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.google.fr/" target="_blank">
+                              <img class="social" src="img/icon/google.png" alt="google">
+                          </a>
+                        </li>
+                    </ul>
+                    <ul class="menu left">
+                        <li>
+                            <a>0647857007</a>
+                        </li>
+                    </ul>
+                    <ul class="menu left">
+                        <?php Session::getUserMenu(); ?>
+                        <li>
+                            <a href="index.php?controller=accessoire&action=readAll">Panier</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="primary">
                     <a><img alt="Salut" src="img/logo.png"/></a>
@@ -23,13 +50,6 @@
                         <li>
                             <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                         </li>
-                        <li>
-                            <a href="index.php?controller=accessoire&action=readAll">Panier</a>
-                        </li>
-                        <li>
-                            <a href="index.php?controller=commande&action=readAll">Commandes</a>
-                        </li>
-                        <?php Session::getUserMenu(); ?>
                     </ul>
                 </div>
             </nav>
