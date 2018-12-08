@@ -8,28 +8,30 @@
     <body>
         <header>
             <nav>
-                <div>
-                    <div>
-                        <a><img alt="Salut" src="img/logo.jpg"/></a>
-                    </div>
+                <div class="top">
+                    <a>CCCccccccc</a>
                 </div>
-                <ul class="btw">
-                    <li>
-                        <a class="ici" href="index.php">Accueil</a>
-                    </li>
-                    <li>
-                        <a href="index.php?controller=sneaker&action=readAll">Sneakers</a>
-                    </li>
-                    <li>
-                        <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
-                    </li>
-                    <li>
-                        <a href="index.php?controller=accessoire&action=readAll">Panier</a>
-                    </li>
-                    <li>
-                        <a href="index.php?controller=commande&action=readAll">Commandes</a>
-                    </li>
-                    <?php Session::getUserMenu(); ?>;
+                <div class="primary">
+                    <a><img alt="Salut" src="img/logo.jpg"/></a>
+                    <ul class="btw">
+                        <li>
+                            <a class="ici" href="index.php">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=sneaker&action=readAll">Sneakers</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=accessoire&action=readAll">Panier</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=commande&action=readAll">Commandes</a>
+                        </li>
+                        <?php Session::getUserMenu(); ?>
+                    </ul>
+                </div>
             </nav>
         </header>
 
