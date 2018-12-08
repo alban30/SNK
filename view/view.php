@@ -24,7 +24,7 @@
                         <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                     </li>
                     <li>
-                        <a href="index.php?controller=accessoire&action=readAll">Pannier</a>
+                        <a href="index.php?controller=accessoire&action=readAll">Panier</a>
                     </li>
                     <li>
                         <a href="index.php?controller=commande&action=readAll">Commandes</a>
