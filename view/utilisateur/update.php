@@ -2,7 +2,7 @@
         <input type="hidden" name="controller" value="<?php echo static::$object;?>">
         <input type="hidden" name="action" value="<?php echo $target_action;?>">
         <fieldset>
-                <legend>Mon formulaire :</legend>
+                <legend>Mise à jour de l'utilisateur :</legend>
                 <p>
                         <label for="login_id">Login</label> :
                         <input type="text" placeholder="Ex : JP" name="login" id="login_id" value="<?php echo htmlspecialchars($u->get("login"));?>" <?php echo $modifier; ?>/>

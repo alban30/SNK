@@ -2,7 +2,7 @@
         <input type="hidden" name="controller" value="<?php echo static::$object;?>">
         <input type="hidden" name="action" value="<?php echo $target_action;?>">
         <fieldset>
-                <legend>Mon formulaire :</legend>
+                <legend>Mise à jour d'un accessoire :</legend>
                 <p>
                         <label for="idAccessoire">ID Accessoire</label> :
                         <input type="number" placeholder="Ex : 1" name="idAccessoire" id="idAccessoire" value="<?php echo htmlspecialchars($a->get("id_accessoire"));?>" <?php echo $modifier; ?>/>
