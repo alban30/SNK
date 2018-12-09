@@ -1,5 +1,5 @@
 <article class="contentswitch form">
-		<legend>Laissez un message</legend>
+		<legend>Contactez-nous !</legend>
 		<div>
 				<div>
 						<form>
@@ -223,9 +223,8 @@
 								</div>
 								<div>
 										<p>Vous avez entendu parler de nous via : <span class="etoile">*</span></p>
-										<input type="radio" name="upopularite" /> Gagne Sebastien
-										<input type="radio" name="upopularite" /> Lebreton Romain
-										<input type="radio" name="upopularite" /> Dieu
+										<input type="radio" name="upopularite" /> Mr Gagne Sebastien
+										<input type="radio" name="upopularite" /> Mr Lebreton Romain
 										<input type="radio" name="upopularite" /> Autre
 								</div>
 								<div class="controls">
@@ -244,7 +243,7 @@
 				<img alt="Salut2" src="img/logo2.png"/>
 				<h3>Coordonnées</h3>
 				<p><img src="img/icon/home2.png" alt="Maison" /> 1 rue de la liberté 34000</p>
-				<p><img src="img/icon/contact2.png" alt="Contact" /> contact@exosquelette.com</p>
+				<p><img src="img/icon/contact2.png" alt="Contact" /> contact@snk.com</p>
 				<p><img src="img/icon/telephone2.png" alt="Telephone" /> 04 04 04 04 04</p>
 		</div>
 		<div class="info">
