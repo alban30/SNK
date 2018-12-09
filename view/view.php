@@ -53,10 +53,10 @@
                         <?php
                         if(Session::is_admin()) {
                             if(static::$object == "utilisateur") {
-                                echo '<li><a class="ici" href="index.php?controller=utilisateur&action=readAll">Utilisateur</a></li>';
+                                echo '<li><a class="ici" href="index.php?controller=utilisateur&action=readAll">Utilisateurs</a></li>';
                             }
                             else {
-                                echo '<li><a href="index.php?controller=utilisateur&action=readAll">Utilisateur</a></li>';
+                                echo '<li><a href="index.php?controller=utilisateur&action=readAll">Utilisateurs</a></li>';
                             }
                         }
                         ?>
