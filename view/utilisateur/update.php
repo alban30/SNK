@@ -1,51 +1,52 @@
-<form method="<?php echo $method; ?>" action="index.php">
+<article class="content form">
+    <form method="<?php echo $method; ?>" action="index.php">
         <input type="hidden" name="controller" value="<?php echo static::$object;?>">
         <input type="hidden" name="action" value="<?php echo $target_action;?>">
-        <fieldset>
-                <legend>Mise à jour de l'utilisateur :</legend>
-                <p>
-                        <label for="login_id">Login</label> :
-                        <input type="text" placeholder="Ex : JP" name="login" id="login_id" value="<?php echo htmlspecialchars($u->get("login"));?>" <?php echo $modifier; ?>/>
-                </p>
+        <legend>Mise à jour de votre profil</legend>
+        <div class="controls">
+            <p>Login <span class="etoile">*</span></p>
+            <input class="form-contact" type="text" name="login" value="<?php echo htmlspecialchars($u->get("login"));?>" <?php echo $modifier; ?>/>
+        </div>
 
-                <p>
-                        <label for="nom_id">Nom</label> :
-                        <input type="text" placeholder="Ex : Chaudron" name="nom" id="nom" value="<?php echo htmlspecialchars($u->get("nom"));?>" required/>
-                </p>
+        <div class="controls">
+            <p>Nom <span class="etoile">*</span></p>
+            <input class="form-contact" type="text" name="nom" value="<?php echo htmlspecialchars($u->get("nom"));?>" required/>
+        </div>
 
-                <p>
-                        <label for="prenom_id">Prenom</label> :
-                        <input type="text" placeholder="Ex : Jean Pierre" name="prenom" id="prenom" value="<?php echo htmlspecialchars($u->get("prenom"));?>" required/>
-                </p>
+        <div class="controls">
+            <p>Prénom <span class="etoile">*</span></p>
+            <input class="form-contact" type="text" name="prenom" value="<?php echo htmlspecialchars($u->get("prenom"));?>" required/>
+        </div>
 
-                <p>
-                        <label for="email">Email</label> :
-                        <input type="email" placeholder="hello@gmail.com" name="email" id="email" value="<?php echo htmlspecialchars($u->get("email"));?>" required/>
-                </p>
+        <div class="controls">
+            <p>Email <span class="etoile">*</span></p>
+            <input class="form-contact" type="email" name="email" value="<?php echo htmlspecialchars($u->get("email"));?>" required/>
+        </div>
 
-                <p>
-                        <label for="mdp">Mot de passe</label> :
-                        <input type="password" placeholder="********" name="mdp" id="mdp" required/>
-                </p>
+        <div class="controls">
+            <p>Mot de passe <span class="etoile">*</span></p>
+            <input class="form-contact" type="password" name="mdp" required/>
+        </div>
 
-                <p>
-                        <label for="mdpc">Confirmation</label> :
-                        <input type="password" placeholder="********" name="mdpc" id="mdpc" required/>
-                </p>
+        <div class="controls">
+            <p>Confirmation de mot de passe <span class="etoile">*</span></p>
+            <input class="form-contact" type="password" name="mdpc" required/>
+        </div>
 
-                <?php
-                if(Session::is_admin()) {
-                        echo <<< EOT
-                        <p>
-                            <label for="admin">Administrateur</label> :
-                            <input type="checkbox" name="admin" id="admin" value="admin">
-                        </p>
+        <?php
+        if(Session::is_admin()) {
+                echo <<< EOT
+
+                <div>
+                    <p>Administrateur <span class="etoile">*</span></p>
+                    <input type="checkbox" name="admin" id="admin">
+                </div>
 EOT;
-                }
-                ?>
+        }
+        ?>
 
-                <p>
-                    <input type="submit" value="Envoyer" />
-                </p>
-        </fieldset>
-</form>
+        <div>
+            <input class="button" type="submit" value="Envoyer" />
+        </div>
+    </form>
+</article>

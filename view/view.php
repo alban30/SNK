@@ -42,16 +42,16 @@
                     <a><img alt="Salut" src="img/logo.png"/></a>
                     <ul class="menu right">
                         <li>
-                            <a class="ici" href="index.php">Accueil</a>
+                            <a class="<?php if(static::$object == "accueil") { echo "ici"; } ?>" href="index.php">Accueil</a>
                         </li>
                         <li>
-                            <a href="index.php?controller=sneaker&action=readAll">Sneakers</a>
+                            <a class="<?php if(static::$object == "sneaker") { echo "ici"; } ?>" href="index.php?controller=sneaker&action=readAll">Sneakers</a>
                         </li>
                         <li>
-                            <a href="index.php?controller=accessoire&action=readAll">Accessoires</a>
+                            <a class="<?php if(static::$object == "accessoire") { echo "ici"; } ?>" href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                         </li>
                         <li>
-                            <a href="index.php?controller=accessoire&action=readAll">Contact</a>
+                            <a class="<?php if(static::$object == "contact") { echo "ici"; } ?>" href="index.php?controller=contact&action=readAll">Contact</a>
                         </li>
                     </ul>
                 </div>

@@ -15,7 +15,7 @@
 
         <div class="controls">
             <p>Prix <span class="etoile">*</span></p>
-            <input class="form-contact" type="text" name="prixSneaker" value="<?php echo htmlspecialchars($s->get("prix_sneaker"));?>" required/>
+            <input class="form-contact" type="number" name="prixSneaker" step="0.01" value="<?php echo htmlspecialchars($s->get("prix_sneaker"));?>" required/>
         </div>
 
         <div class="controls">
@@ -25,12 +25,12 @@
 
         <div class="controls">
             <p>Pointure <span class="etoile">*</span></p>
-            <input class="form-contact" type="text" name="pointureSneaker" value="<?php echo htmlspecialchars($s->get("pointure_sneaker"));?>" required/>
+            <input class="form-contact" type="number" min="36" max="48" name="pointureSneaker" value="<?php echo htmlspecialchars($s->get("pointure_sneaker"));?>" required/>
         </div>
 
         <div class="controls">
             <p>Marque <span class="etoile">*</span></p>
-            <input class="form-contact" type="text" name="nomSneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
+            <input class="form-contact" type="text" name="marqueSneaker" value="<?php echo htmlspecialchars($s->get("marque_sneaker"));?>" required/>
         </div>
 
         <div>

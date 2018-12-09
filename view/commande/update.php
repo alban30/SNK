@@ -15,7 +15,7 @@
 
         <div class="controls">
             <p>Marque <span class="etoile">*</span></p>
-            <input class="form-contact" type="text" name="nomSneaker" value="<?php echo htmlspecialchars($c->get("marque_sneaker"));?>" required/>
+            <input class="form-contact" type="text" name="marqueSneaker" value="<?php echo htmlspecialchars($c->get("marque_sneaker"));?>" required/>
         </div>
 
         <div class="controls">
