@@ -24,7 +24,6 @@
         </div>
 
         <div>
-            <input type="hidden" value="<?php echo static::$object;?>" />
             <input class="button" type="submit" value="Envoyer" />
         </div>
     </form>
