@@ -241,7 +241,7 @@
 </article>
 <article class="content">
 		<div class="info">
-				<img alt="Salut2" src="img/logo.png"/>
+				<img alt="Salut2" src="img/logo2.png"/>
 				<h3>Coordonnées</h3>
 				<p><img src="img/icon/home2.png" alt="Maison" /> 1 rue de la liberté 34000</p>
 				<p><img src="img/icon/contact2.png" alt="Contact" /> contact@exosquelette.com</p>
