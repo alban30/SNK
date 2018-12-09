@@ -2,7 +2,7 @@
     <form method="<?php echo $method; ?>" action="index.php">
         <input type="hidden" name="controller" value="<?php echo static::$object;?>">
         <input type="hidden" name="action" value="<?php echo $target_action;?>">
-        <legend>Mise à jour d'un accessoire</legend>
+        <legend>Configuration d'un accessoire</legend>
         <div class="controls">
             <p>ID Accessoire <span class="etoile">*</span></p>
             <input class="form-contact" type="number" placeholder="Ex : 1" name="idAccessoire" value="<?php echo htmlspecialchars($a->get("id_accessoire"));?>" <?php echo $modifier; ?>/>

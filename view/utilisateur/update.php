@@ -2,7 +2,7 @@
     <form method="<?php echo $method; ?>" action="index.php">
         <input type="hidden" name="controller" value="<?php echo static::$object;?>">
         <input type="hidden" name="action" value="<?php echo $target_action;?>">
-        <legend>Mise à jour de votre profil</legend>
+        <legend>Configuration d'un profil</legend>
         <div class="controls">
             <p>Login <span class="etoile">*</span></p>
             <input class="form-contact" type="text" name="login" value="<?php echo htmlspecialchars($u->get("login"));?>" <?php echo $modifier; ?>/>
