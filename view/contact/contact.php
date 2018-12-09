@@ -232,9 +232,9 @@
 										<p>Message</p>
 										<textarea class="form-contact" name="message" placeholder="Votre message"></textarea>
 								</div>
-								<div class="form-group">
-										<button class="btn btn-primary" type="submit">Envoyez le message</button>
-								</div>
+								<div>
+				            <input class="button" type="submit" value="Envoyer" />
+				        </div>
 						</form>
 				</div>
 		</div>
