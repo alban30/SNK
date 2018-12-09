@@ -244,7 +244,7 @@
 				<h3>Coordonnées</h3>
 				<p><img src="img/icon/home2.png" alt="Maison" /> 1 rue de la liberté 34000</p>
 				<p><img src="img/icon/contact2.png" alt="Contact" /> contact@snk.com</p>
-				<p><img src="img/icon/telephone2.png" alt="Telephone" /> 04 04 04 04 04</p>
+				<p><img src="img/icon/telephone2.png" alt="Telephone" /> 06 05 04 03 02 </p>
 		</div>
 		<div class="info">
 				<h3>Horaires</h3>
