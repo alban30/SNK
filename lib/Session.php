@@ -45,7 +45,7 @@ class Session {
     public  function montantPanier(){
             $prixtotal=0;
             for($i = 0; $i < count($_SESSION["panier"]["objet"]); $i++) {
-                    $prixtotal += $_SESSION["panier"]["quantite"][$i] * $_SESSION["panier"]["objet"][$i];
+                    $prixtotal += $_SESSION["panier"]["quantite"][$i] * ($_SESSION["panier"]["objet"][$i])->get($prix_sneaker);
             }
             return $prixtotal;
     }
