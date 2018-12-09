@@ -23,13 +23,8 @@ class ControllerCommande {
             else {
                     $pagetitle = "Affichage d'une commande";
                     $view = "detail";
-                    $links = "";
-
-                    if(Session::is_Admin()) {
-                            $links = '<a style="margin-right: 1%" href="index.php?controller=commande&action=delete&idCommande=' . rawurlencode($c->get("id_commande")) . '">Supprimer cette commande</a><a style="margin-right: 1%" href="index.php?controller=commande&action=update&idCommande=' . rawurlencode($c->get("id_commande")) . '">Modifier cette commande</a>';
-                    }
             }
-            
+
             require (File::build_path(array("view", "view.php")));
     }
 
