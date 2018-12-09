@@ -388,6 +388,10 @@ footer p img {
   color: red;
 }
 
+.content .info:first-child {
+  margin-top: 25vh;
+}
+
 .info {
   margin: 1em;
   margin-bottom: 2em;
@@ -412,4 +416,45 @@ footer p img {
 .info p img {
   padding-top: 0em;
   width: 1em;
+}
+
+@media(max-width: 1050px) {
+  .content .info:first-child {
+    margin-top: 5vh;
+  }
+}
+
+/*------------------------------
+	PRODUCT
+------------------------------*/
+
+.product {
+  margin: 1em;
+  padding: 2em;
+  text-align: center;
+  display: block;
+  flex-direction: row;
+}
+
+.product a {
+  color: #161616;
+  text-decoration: none;
+}
+
+.product h3 {
+  margin: -.01em;
+}
+
+.product p {
+  margin: -.01em;
+  padding-top: .2em;
+}
+
+.product i {
+  font-size: 15px;
+}
+
+.product img {
+  width: 20em;
+  margin-bottom: 1em;
 }
