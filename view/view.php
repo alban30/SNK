@@ -50,6 +50,16 @@
                         <li>
                             <a class="<?php if(static::$object == "accessoire") { echo "ici"; } ?>" href="index.php?controller=accessoire&action=readAll">Accessoires</a>
                         </li>
+                        <?php
+                        if(Session::is_admin()) {
+                            if(static::$object == "utilisateur") {
+                                echo '<li><a class="ici" href="index.php?controller=utilisateur&action=readAll">Utilisateur</a></li>';
+                            }
+                            else {
+                                echo '<li><a href="index.php?controller=utilisateur&action=readAll">Utilisateur</a></li>';
+                            }
+                        }
+                        ?>
                         <li>
                             <a class="<?php if(static::$object == "contact") { echo "ici"; } ?>" href="index.php?controller=contact&action=readAll">Contact</a>
                         </li>

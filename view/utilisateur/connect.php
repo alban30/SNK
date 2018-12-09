@@ -1,19 +1,27 @@
-<form method="post" action="index.php?controller=utilisateur&action=<?php echo $target_action;?>">
-        <fieldset>
-                <legend>Connexion</legend>
-                <p>
-                        <label for="login_id">Login</label> :
-                        <input type="text" placeholder="JP" name="login" id="login_id" required/>
-                </p>
+<article class="content form">
+    <form method="<?php echo $method; ?>" action="index.php">
+        <input type="hidden" name="controller" value="<?php echo static::$object;?>">
+        <input type="hidden" name="action" value="<?php echo $target_action;?>">
+        <legend>Connexion</legend>
+        <div class="controls">
+            <p>Login <span class="etoile">*</span></p>
+            <input class="form-contact" type="text" name="login" required/>
+        </div>
 
-                <p>
-                        <label for="mdp">Mot de passe</label> :
-                        <input type="password" placeholder="********" name="mdp" id="mdp" required/>
-                </p>
+        <div class="controls">
+            <p>Mot de passe <span class="etoile">*</span></p>
+            <input class="form-contact" type="password" name="mdp" required/>
+        </div>
 
-                <p>
-                        <input type="hidden" value="<?php echo static::$object;?>" />
-                        <input type="submit" value="Envoyer" />
-                </p>
-        </fieldset>
-</form>
+        <div>
+            <input class="button" type="submit" value="Envoyer" />
+        </div>
+    </form>
+    <div>
+        <p>
+            <?php
+            
+            ?>
+        </p>
+    </div>
+</article>
