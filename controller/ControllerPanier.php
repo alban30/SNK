@@ -41,11 +41,8 @@ class ControllerPanier {
 
     public static function deletePanier(){
             setcookie ("panier", "", time() - 1);
-            $controller = "accueil";
-            $pagetitle = "SNK - World Sneakers";
-            $view = "accueil";
-
-            require (File::build_path(array("view", "view.php")));
+            ControllerAccueil::readAll();
+            
     }
 }
 

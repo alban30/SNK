@@ -1,5 +1,5 @@
 <?php
-if ($tabsneaker != false){
+if (!empty($tabsneaker)){
 		foreach ($tabsneaker as $s) {
 				$id_sneaker_html = htmlspecialchars($s);
 				$sneaker = ModelSneaker::select($s);
