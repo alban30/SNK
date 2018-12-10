@@ -17,38 +17,6 @@ class Session {
         }
     }
 
-    public function creationPanier() {
-            if (!isset($_SESSION["panier"])) {
-                    $_SESSION["panier"] = array();
-                    $_SESSION["panier"]["objet"] = array();
-                    $_SESSION["panier"]["quantite"] = array();
-                    $_SESSION["panier"]["cle"] = false;
-            }
-            return true;
-
-    }
-
-    public function isVerrouille(){
-        if (isset($_SESSION["panier"]) && $_SESSION["panier"]["cle"]) {
-                return true;
-        }
-        else {
-                return false;
-        }
-    }
-
-    public function viderPanier(){
-
-        unset($_SESSION['panier']);
-    }
-
-    public  function montantPanier(){
-            $prixtotal=0;
-            for($i = 0; $i < count($_SESSION["panier"]["objet"]); $i++) {
-                    $prixtotal += $_SESSION["panier"]["quantite"][$i] * ($_SESSION["panier"]["objet"][$i])->get($prix_sneaker);
-            }
-            return $prixtotal;
-    }
 
 }
 ?>

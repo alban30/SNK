@@ -19,6 +19,8 @@ if (!empty($tabsneaker)){
 
 echo '<a style="margin-right: 1%" href="index.php?controller=panier&action=deletePanier">Vider le panier';
 
+echo '<a style="margin-right: 1%" href="index.php?controller=commande&action=validate">Valider la commande';
+
 ?>
 
 
