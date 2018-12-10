@@ -164,11 +164,19 @@ class ControllerUtilisateur {
 	}
 
 	public static function connect() {
+		if(isset($_SESSION["login"])) {
+
+			header("Location: index.php");
+		
+		}
+
+		else {
 			$pagetitle = "Connexion";
 			$view = "connect";
 			$target_action = "connected";
 
 			require (File::build_path(array("view", "view.php")));
+		}
 	}
 
 	public static function connected() {
