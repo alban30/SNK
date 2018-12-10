@@ -88,5 +88,10 @@ class ControllerCommande {
                     self::read();
             }
     }
+
+    public static function validate() {
+        
+    }
+    
 }
 ?>
