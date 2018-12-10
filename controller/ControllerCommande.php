@@ -92,11 +92,23 @@ class ControllerCommande {
     public static function validate() {
         //On enregistre la commande dans la bdd
         $tab = unserialize($_COOKIE['panier']);
-        $arraycommande = array(
-            'id_sneaker' => $tab[0],
-            'login' => $_SESSION["login"],
-        );
-        ModelCommande::save($arraycommande);
+        for ($i=0; $i < sizeof($tab); $i++) { 
+            $arraycommande = array(
+                'id_sneaker' => $tab[$i],
+                'login' => $_SESSION["login"],
+            );
+            ModelCommande::save($arraycommande);
+        }
+        if(!isset($_COOKIE)) {
+            $pagetitle = "Erreur";
+            $view = "error";
+        }
+        else {
+            $pagetitle = "Commande effectuée !";
+            $view = "validate";
+        }
+        require (File::build_path(array("view", "view.php")));
+
     }
     
 }
