@@ -466,7 +466,7 @@ footer p img {
   margin-bottom: 1em;
 }
 
-@media(max-width: 1050px) {
+@media(max-width: 850px) {
   .product {
     display: flex;
     flex-wrap: wrap;
