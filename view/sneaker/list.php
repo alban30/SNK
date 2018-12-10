@@ -17,4 +17,3 @@ foreach ($tab_s as $s): ?>
         </div>
     </article>
 <?php endforeach ?>
-?>
