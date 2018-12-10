@@ -34,7 +34,7 @@
                     <ul class="menu right">
                         <?php Session::getUserMenu(); ?>
                         <li>
-                            <a href="index.php?controller=accessoire&action=readAll">Panier</a>
+                            <a href="index.php?controller=panier&action=afficheAllPanier">Panier</a>
                         </li>
                     </ul>
                 </div>

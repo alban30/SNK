@@ -11,4 +11,7 @@ $pointure_sneaker_html = htmlspecialchars($s->get("pointure_sneaker"));
 $marque_sneaker_html = htmlspecialchars($s->get("marque_sneaker"));
 
 echo "<p> Id : $id_sneaker_html, nom : $nom_sneaker_html, prix : $prix_sneaker_html, couleur : $couleur_sneaker_html, pointure : $pointure_sneaker_html, marque : $marque_sneaker_html</p>";
+
+echo '<a  href="index.php?controller=panier&action=addPanier&idSneaker=' . $id_sneaker_html . '">Ajouter cette sneaker au panier</a>';
+
 ?>

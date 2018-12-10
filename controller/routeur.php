@@ -5,6 +5,7 @@ require_once (File::build_path(array("controller", "ControllerAccessoire.php")))
 require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
 require_once (File::build_path(array("controller", "ControllerCommande.php")));
 require_once (File::build_path(array("controller", "ControllerContact.php")));
+require_once (File::build_path(array("controller", "ControllerPanier.php")));
 
 function myGet($nomVar) {
 		if(isset($_GET[$nomVar])) {
