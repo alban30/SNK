@@ -90,7 +90,24 @@ class ControllerCommande {
     }
 
     public static function validate() {
-        
+        if(isset($_SESSION)) {
+                    ModelSneaker::save(array("id_commande"=>myGet("idCommande"), "nom_sneaker"=>myGet("nomSneaker"), "marque_sneaker"=>myGet("marqueSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "login"=>myGet("login"), "nom"=>myGet("nom"), "prenom"=>myGet("prenom")));
+                    $tab_c = ModelCommande::selectAll();
+
+                    if(!$idCommande) {
+                            $pagetitle = "Erreur";
+                            $view = "error";
+                    }
+                    else {
+                            $pagetitle = "Suppression d'une commande";
+                            $view = "deleted";
+                    }
+
+                    require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                    self::read();
+            }
     }
     
 }
