@@ -48,15 +48,7 @@ class ModelPanier extends Model{
         				$tab_p = $req_prep->fetchAll();
        					return $tab_p;
       			}
-
-
     }
-
-
-    
-
-
-
 
 }
 ?>

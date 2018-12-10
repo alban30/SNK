@@ -40,5 +40,9 @@ class ModelCommande extends Model {
                     $this->$prenom = $data("prenom");        
             }
     }
+
+    public static function validate() {
+        
+    }
 }
 ?>
