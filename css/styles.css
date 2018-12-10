@@ -465,3 +465,14 @@ footer p img {
   width: 20em;
   margin-bottom: 1em;
 }
+
+@media(max-width: 1050px) {
+  .product {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product>* {
+    flex: 1 1 18em;
+  }
+}
