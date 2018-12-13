@@ -1,8 +1,26 @@
 <?php
-if(Session::is_admin()) {
-    echo '<a style="margin-right: 1%" href="index.php?controller=accessoire&action=create">Créer un accessoire</a>';
-}
-foreach ($tab_a as $a) {
-    	echo '<p><a href="index.php?controller=accessoire&action=read&idAccessoire=' . rawurlencode($a->get("id_accessoire")) . '"> Accessoire d\'id ' . htmlspecialchars($a->get("id_accessoire")) . '.</a></p>';
-}
-?>
+if(Session::is_admin()): ?>
+    <div class="contenu">
+        <a href="index.php?controller=accessoire&action=create">Créer un accessoire</a>
+    </div>
+<?php endif ?>
+<article class="content product">
+    <?php foreach ($tab_a as $a): ?>
+        <?php
+        $i = 0;
+        if($i%3 == 0):
+        ?>
+        <div>
+            <a href="index.php?controller=accessoire&action=read&idAccessoire=<?php echo rawurlencode($a->get("id_accessoire")) ?>">
+              <img src="img/product/accessories/<?php echo $a->get("id_accessoire") ?>.png" alt="product <?php echo $a->get("id_accessoire") ?>">
+              <h3><strong><?php echo $a->get("nom_accessoire") ?></strong></h3>
+              <p><?php echo $a->get("marque_accessoire") ?></p>
+              <p><i></i><?php echo $a->get("prix_accessoire") ?> €</p>
+            </a>
+        </div>
+        <?php
+        endif;
+        $i++;
+        ?>
+    <?php endforeach ?>
+</article>
