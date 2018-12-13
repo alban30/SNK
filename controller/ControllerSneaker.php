@@ -128,52 +128,6 @@ class ControllerSneaker {
             }
     }
 
-    public function ajouterSneakerPanier($objet,$quantite) {
-            if (creationPanier() && !isVerrouille()) {
-                    $recherche = array_search($objet,  $_SESSION["panier"]["sneaker"]);
-                    if ($recherche !== false) {
-                            $_SESSION["panier"]["quantite"][$recherche] += $quantite ;
-            
-                    }
-                    else {
-                            array_push( $_SESSION["panier"]["sneaker"],$objet);
-                            array_push( $_SESSION["panier"]["quantite"],$quantite);
-                    }
-            }
-        
-        else { 
-                echo "Un problème est survenu veuillez contacter l'admin du site.";
-        }
-
-    }
-
-    public function supprimeSneakerpanier ($objet) {
-        if (creationPanier() && !isVerrouille()) {
-                    $paniertampon = array();
-                    $paniertampon["sneaker"] = array();
-                    $paniertampon["quantite"] = array();
-                    $paniertampon["cle"] = $_SESSION["panier"]["cle"];
-
-                    for($i = 0; $i < count($_SESSION["panier"]["objet"]); $i++) {
-                            if ($_SESSION["panier"]["objet"][$i] !== $objet) {
-                                    array_push( $paniertampon["objet"],$_SESSION["panier"]["objet"][$i]);
-                                    array_push( $paniertampon["quantite"],$_SESSION["panier"]["quantite"][$i]);
-                            }
-
-                    }
-
-                    $_SESSION["panier"] =  $paniertampon;
-                    unset($paniertampon);
-
-        }
-       
-        else {
-                echo "Un problème est survenu veuillez contacter l'admin du site.";
-        }
-
    
-
-
-    }
 }
 ?>
