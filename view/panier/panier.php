@@ -14,7 +14,7 @@ if (!empty($tabsneaker)){
 		}
 	}
 	else {
-		echo "Votre panier est vide";
+		echo "Votre panier est vide !";
 	}
 
 echo '<a style="margin-right: 1%" href="index.php?controller=panier&action=deletePanier">Vider le panier';
