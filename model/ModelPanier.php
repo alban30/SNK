@@ -9,10 +9,11 @@ class ModelPanier extends Model{
 
 	private $id_sneaker;
 
+
 	public function __construct($data = array()) {
             if (!empty($data)) {
                     $this->$id_sneaker = $data("id_sneaker");
-                    
+              
             }
     }
 
@@ -27,7 +28,7 @@ class ModelPanier extends Model{
     	        if (is_array($tabsneaker)){
         			$tab = array();
         			foreach ($tab as $id){
-         					$sql = "SELECT * FROM snk_sneaker WHERE id_sneaker=:id";
+         					  $sql = "SELECT * FROM snk_sneaker WHERE id_sneaker=:id";
           					$req_prep = Model::$pdo->prepare($sql);
           					$values = array("id" => $id,);
           					$req_prep->execute($values);

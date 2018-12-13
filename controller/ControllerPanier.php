@@ -23,8 +23,7 @@ class ControllerPanier {
 
     public static function afficheAllPanier() {
             if(isset($_COOKIE["panier"])) {
-                    $tabsneaker = unserialize($_COOKIE["panier"]);
-                    $sneaker = ModelPanier::getPanier($tabsneaker);
+                    $newTabElement = self::generateQuantityTab();
                     $controller = "panier";
                     $pagetitle = "Mon panier";
                     $view = "panier";
@@ -44,6 +43,58 @@ class ControllerPanier {
             ControllerAccueil::readAll();
             
     }
+
+    public static function totalquantitePanier(){
+            $tabsneaker = unserialize($_COOKIE["panier"]);
+            $quantite = sizeof($tabsneaker);
+            return $quantite ;
+            
+            
+    }
+
+    public static function quantiteproduitPanier($idSneaker){
+            $tabsneaker = unserialize($_COOKIE["panier"]);
+            $max = sizeof($tabsneaker);
+            $qtp = 0;
+            for($i = 0; $i < $max;$i++){
+                    if($idSneaker == $tabsneaker[i]){
+                        $qtp++;
+                    }
+
+            }
+            return $qtp;
+            
+            
+    }
+
+    public static function generateQuantityTab(){
+        $tabsneaker = unserialize($_COOKIE["panier"]);
+        $tabId = array();
+        $tabQt = array();
+        foreach($tabsneaker as $sneakerId){
+            if(in_array($sneakerId, $tabId))
+            {
+                $tabQt[array_search($sneakerId, $tabId)]++;
+            }
+            else
+            {
+                array_push($tabId, $sneakerId);
+                array_push($tabQt, 1);
+            }
+            /*foreach ($newTab as $newTabElement) {
+                $temp = false;
+                if($newTabElement['id'] = $sneaker){
+                    $newTabElement['quantite']++;
+                    $temp = true;
+                }
+                if($temp = false){
+                    array_push($newTabElement, array('id' => $sneakerId, 'quantite' => 1));
+                }
+            }*/
+        }
+        return array($tabId, $tabQt);
+    }
+
 }
 
 ?>
