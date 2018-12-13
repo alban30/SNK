@@ -81,16 +81,7 @@ class ControllerPanier {
                 array_push($tabId, $sneakerId);
                 array_push($tabQt, 1);
             }
-            /*foreach ($newTab as $newTabElement) {
-                $temp = false;
-                if($newTabElement['id'] = $sneaker){
-                    $newTabElement['quantite']++;
-                    $temp = true;
-                }
-                if($temp = false){
-                    array_push($newTabElement, array('id' => $sneakerId, 'quantite' => 1));
-                }
-            }*/
+           }
         }
         return array($tabId, $tabQt);
     }
