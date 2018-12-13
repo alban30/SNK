@@ -1,5 +1,6 @@
 <?php
 require_once (File::build_path(array("model", "ModelCommande.php"))); // chargement du modèle
+require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
 
 class ControllerCommande {
     protected static $object = "commande";
@@ -91,24 +92,22 @@ class ControllerCommande {
 
     public static function validate() {
         //On enregistre la commande dans la bdd
-        $tab = unserialize($_COOKIE['panier']);
-        for ($i=0; $i < sizeof($tab); $i++) { 
-            $arraycommande = array(
-                'id_sneaker' => $tab[$i],
-                'login' => $_SESSION["login"],
-            );
-            ModelCommande::save($arraycommande);
-        }
-        if(!isset($_COOKIE)) {
-            $pagetitle = "Erreur";
-            $view = "error";
-        }
-        else {
+        if(isset($_COOKIE) && isset($_SESSION["login"])) {
+            $tab = unserialize($_COOKIE['panier']);
+            for ($i=0; $i < sizeof($tab); $i++) { 
+                $arraycommande = array(
+                    'login' => $_SESSION["login"],
+                    'date' => date("Y-m-d H:i:s"),
+                );
+                ModelCommande::save($arraycommande);
+            }
             $pagetitle = "Commande effectuée !";
             $view = "validate";
+            require (File::build_path(array("view", "view.php")));
         }
-        require (File::build_path(array("view", "view.php")));
-
+        else {
+            ControllerUtilisateur::connect();
+        }
     }
     
 }
