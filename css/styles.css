@@ -44,6 +44,12 @@ body {
   flex-direction: column; /* affichage vertical */
   min-height: 100vh; /* toute la hauteur du viewport (compatible IE9+) */
 }
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .content {
   display: block; /* IE fix */
   flex: 1; /* occupe la largeur restante */
@@ -314,8 +320,8 @@ footer p img {
 }
 
 .form div {
-  padding-left: 10vh;
-  padding-right: 10vh;
+  padding-left: 5vh;
+  padding-right: 5vh;
 }
 
 .form legend {
@@ -424,11 +430,6 @@ footer p img {
 	PRODUCT
 ------------------------------*/
 
-.info {
-  display: flex;
-  text-align: center;
-}
-
 .product {
   margin: 1em;
   padding: 2em;
@@ -466,4 +467,21 @@ footer p img {
 .product img {
   width: 20em;
   margin-bottom: 1em;
+}
+
+/*------------------------------
+  DETAIL PRODUCT
+------------------------------*/
+
+.detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.product>* {
+    flex: 1 1 22em;
+}
+
+.detail img {
+  width: 20em;
 }

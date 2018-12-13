@@ -69,7 +69,7 @@
             </nav>
         </header>
 
-        <main>
+        <main class="<?php if($view == "list" || $view == "detail"){echo "";} else{echo "wrapper";} ?>">
               <?php
               // Si $controleur='voiture' et $view='list',
               // alors $filepath="/chemin_du_site/view/voiture/list.php"
