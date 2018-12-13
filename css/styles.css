@@ -474,14 +474,9 @@ footer p img {
 ------------------------------*/
 
 .detail {
-  display: flex;
-  flex-direction: row;
-}
 
-.product>* {
-    flex: 1 1 22em;
 }
 
 .detail img {
-  width: 20em;
+  width: 40em;
 }
