@@ -44,13 +44,6 @@ body {
   flex-direction: column; /* affichage vertical */
   min-height: 100vh; /* toute la hauteur du viewport (compatible IE9+) */
 }
-
-.wrapper {
-  display: block; /* IE fix */
-  display: flex; /* crée un contexte flex pour ses enfants */
-  flex-direction: row; /* affichage horizontal */
-}
-
 .content {
   display: block; /* IE fix */
   flex: 1; /* occupe la largeur restante */
