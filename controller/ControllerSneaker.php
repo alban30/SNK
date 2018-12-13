@@ -58,13 +58,18 @@ class ControllerSneaker {
     }
 
     public static function created() {
-            ModelSneaker::save(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
-            $tab_s = ModelSneaker::selectAll();
+            if(Session::is_admin()) {
+                ModelSneaker::save(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
+                $tab_s = ModelSneaker::selectAll();
 
-            $pagetitle = "Sneaker créée";
-            $view = "created";
+                $pagetitle = "Sneaker créée";
+                $view = "created";
 
-            require (File::build_path(array("view", "view.php")));
+                require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                    self::readAll();
+            }
     }
 
     public static function update() {
@@ -97,13 +102,18 @@ class ControllerSneaker {
     }
 
     public static function updated() {
-            ModelSneaker::update(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
-            $tab_s = ModelSneaker::selectAll();
+            if(Session::is_admin()) {
+                ModelSneaker::update(array("id_sneaker"=>myGet("idSneaker"), "nom_sneaker"=>myGet("nomSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "marque_sneaker"=>myGet("marqueSneaker")));
+                $tab_s = ModelSneaker::selectAll();
 
-            $pagetitle = "Sneaker modifiée";
-            $view = "updated";
+                $pagetitle = "Sneaker modifiée";
+                $view = "updated";
 
-            require (File::build_path(array("view", "view.php")));
+                require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                        self::read();
+            }
     }
 
     public static function delete() {

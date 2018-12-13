@@ -60,13 +60,18 @@ class ControllerCommande {
     }
 
     public static function created() {
-            ModelCommande::save(array("id_commande"=>myGet("idCommande"), "nom_sneaker"=>myGet("nomSneaker"), "marque_sneaker"=>myGet("marqueSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "login"=>myGet("login"), "nom"=>myGet("nom"), "prenom"=>myGet("prenom")));
-            $tab_c = ModelCommande::selectAll();
+            if(Session::is_admin()) {
+                ModelCommande::save(array("id_commande"=>myGet("idCommande"), "nom_sneaker"=>myGet("nomSneaker"), "marque_sneaker"=>myGet("marqueSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "login"=>myGet("login"), "nom"=>myGet("nom"), "prenom"=>myGet("prenom")));
+                $tab_c = ModelCommande::selectAll();
 
-            $pagetitle = "Commande créée";
-            $view = "created";
+                $pagetitle = "Commande créée";
+                $view = "created";
 
-            require (File::build_path(array("view", "view.php")));
+                require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                    self::readAll();
+            }
     }
 
     public static function delete() {

@@ -60,23 +60,28 @@ class ControllerUtilisateur {
 	}
 
 	public static function created() {
-			if(myGet("mdp") == myGet("mdpc") && filter_var(myGet("email"), FILTER_VALIDATE_EMAIL)) {
-					$nonce = Security::generateRandomHex();
-					ModelUtilisateur::save(array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
+			if(Session::is_admin()) {
+				if(myGet("mdp") == myGet("mdpc") && filter_var(myGet("email"), FILTER_VALIDATE_EMAIL)) {
+						$nonce = Security::generateRandomHex();
+						ModelUtilisateur::save(array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
 
-					$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
-					mail(myGet("email"), "Inscription - Blablacar", $mail);
+						$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
+						mail(myGet("email"), "Inscription - Blablacar", $mail);
 
-					$pagetitle = "Utilisateur créé";
-					$view = "created";
+						$pagetitle = "Utilisateur créé";
+						$view = "created";
+				}
+				else {
+						$pagetitle = "Erreur";
+						$view = "error";
+				}
+				$tab_u = ModelUtilisateur::selectAll();
+
+				require (File::build_path(array("view", "view.php")));
 			}
 			else {
-					$pagetitle = "Erreur";
-					$view = "error";
-			}
-			$tab_u = ModelUtilisateur::selectAll();
-
-			require (File::build_path(array("view", "view.php")));
+	                    self::readAll();
+	        }
 	}
 
 	public static function update() {
@@ -110,6 +115,7 @@ class ControllerUtilisateur {
 	}
 
 	public static function updated() {
+		if(Session::is_user(myGet("login")) || Session::is_admin()) {
 			if(myGet("mdp") == myGet("mdpc")) {
 					if(Session::is_admin()) {
 							if(myGet("admin") != false && $_SESSION["admin"] == "1") {
@@ -135,6 +141,7 @@ class ControllerUtilisateur {
 			$u = ModelUtilisateur::select(myGet("login"));
 
 			require (File::build_path(array("view", "view.php")));
+		}
 	}
 
 	public static function delete() {

@@ -59,13 +59,18 @@ class ControllerAccessoire {
     }
 
     public static function created() {
-            ModelAccessoire::save(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
-            $tab_a = ModelAccessoire::selectAll();
+            if(Session::is_admin()) {
+                ModelAccessoire::save(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
+                $tab_a = ModelAccessoire::selectAll();
 
-            $pagetitle = "Accessoire créé";
-            $view = "created";
+                $pagetitle = "Accessoire créé";
+                $view = "created";
 
-            require (File::build_path(array("view", "view.php")));
+                require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                    self::readAll();
+            }
     }
 
     public static function update() {
@@ -98,13 +103,18 @@ class ControllerAccessoire {
     }
 
     public static function updated() {
-            ModelAccessoire::update(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
-            $tab_a = ModelAccessoire::selectAll();
+            if(Session::is_admin()) {
+                ModelAccessoire::update(array("id_accessoire"=>myGet("idAccessoire"), "nom_accessoire"=>myGet("nomAccessoire"), "prix_accessoire"=>myGet("prixAccessoire"), "marque_accessoire"=>myGet("marqueAccessoire")));
+                $tab_a = ModelAccessoire::selectAll();
 
-            $pagetitle = "Accessoire modifié";
-            $view = "updated";
+                $pagetitle = "Accessoire modifié";
+                $view = "updated";
 
-            require (File::build_path(array("view", "view.php")));
+                require (File::build_path(array("view", "view.php")));
+            }
+            else {
+                    self::read();
+            }
     }
 
     public static function delete() {
