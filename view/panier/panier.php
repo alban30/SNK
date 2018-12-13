@@ -1,5 +1,4 @@
 <?php
-//var_dump($newTabElement);
 if (!empty($newTabElement)){
 		foreach ($newTabElement[0] as $id => $s) {
 				$id_sneaker_html = htmlspecialchars($s);

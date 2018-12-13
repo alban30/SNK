@@ -22,34 +22,6 @@ class ModelPanier extends Model{
                     return $this->$nom_attribut;
             return false;
     }
-
-
-    public static function getPanier($tabsneaker) {
-    	        if (is_array($tabsneaker)){
-        			$tab = array();
-        			foreach ($tab as $id){
-         					  $sql = "SELECT * FROM snk_sneaker WHERE id_sneaker=:id";
-          					$req_prep = Model::$pdo->prepare($sql);
-          					$values = array("id" => $id,);
-          					$req_prep->execute($values);
-          					
-          					$req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelProduit');
-          					$tab_p = $req_prep->fetchAll();
-          					array_push ($tab, $tab_p[0]);
-        		}
-        		return $tabsneaker;
-      			}
-      
-      			else {
-        				$sql = "SELECT * FROM snk_sneaker WHERE id_sneaker=:id";
-        				$req_prep = Model::$pdo->prepare($sql);
-        				$values = array("id" => $tabsneaker,);
-        				$req_prep->execute($values);
-        				$req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelProduit');
-        				$tab_p = $req_prep->fetchAll();
-       					return $tab_p;
-      			}
-    }
-
+ 
 }
 ?>
