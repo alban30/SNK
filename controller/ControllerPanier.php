@@ -10,14 +10,14 @@ class ControllerPanier {
 
                     $tabsneaker = array($_GET["idSneaker"]);
                     setcookie("panier", serialize($tabsneaker) , time()+3600);
-                    ControllerAccueil::readAll();
+                    ControllerSneaker::readAll();
             }
             else {
 
                     $tabsneaker = unserialize($_COOKIE["panier"]);
                     array_push($tabsneaker,$_GET["idSneaker"]);
                     setcookie("panier", serialize($tabsneaker) , time()+3600);
-                    ControllerAccueil::readAll();
+                    ControllerSneaker::readAll();
             }
     }
 
@@ -81,7 +81,7 @@ class ControllerPanier {
                 array_push($tabId, $sneakerId);
                 array_push($tabQt, 1);
             }
-           }
+           
         }
         return array($tabId, $tabQt);
     }
