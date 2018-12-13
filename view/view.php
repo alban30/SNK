@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title><?php echo $pagetitle; ?></title>
     </head>
     <body>
@@ -34,7 +35,7 @@
                     <ul class="menu right">
                         <?php Session::getUserMenu(); ?>
                         <li>
-                            <a href="index.php?controller=panier&action=afficheAllPanier">Panier</a>
+                            <a href="index.php?controller=panier&action=afficheAllPanier"><i class="material-icons">shopping_cart</i></a>
                         </li>
                     </ul>
                 </div>
@@ -68,7 +69,7 @@
             </nav>
         </header>
 
-        <main class="wrapper">
+        <main>
               <?php
               // Si $controleur='voiture' et $view='list',
               // alors $filepath="/chemin_du_site/view/voiture/list.php"

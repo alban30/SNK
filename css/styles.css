@@ -156,6 +156,10 @@ body {
     width: 1em;
   }
 
+  .top i {
+    font-size: 1em;
+  }
+
   .primary {
     display: flex;
     height: 7vh;
@@ -426,6 +430,11 @@ footer p img {
 /*------------------------------
 	PRODUCT
 ------------------------------*/
+
+.info {
+  display: flex;
+  text-align: center;
+}
 
 .product {
   margin: 1em;
