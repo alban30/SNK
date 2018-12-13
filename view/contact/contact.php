@@ -214,7 +214,7 @@
 										</select>
 								</div>
 								<div class="controls">
-										<p>Code postale <span class="etoile">*</span></p>
+										<p>Code postal <span class="etoile">*</span></p>
 										<input class="form-contact" type="number" name="postale" type="number" placeholder="Votre code postale" required>
 								</div>
 								<div class="controls">
