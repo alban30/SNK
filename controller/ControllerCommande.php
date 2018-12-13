@@ -61,7 +61,7 @@ class ControllerCommande {
 
     public static function created() {
             if(Session::is_admin()) {
-                ModelCommande::save(array("id_commande"=>myGet("idCommande"), "nom_sneaker"=>myGet("nomSneaker"), "marque_sneaker"=>myGet("marqueSneaker"), "prix_sneaker"=>myGet("prixSneaker"), "couleur_sneaker"=>myGet("couleurSneaker"), "pointure_sneaker"=>myGet("pointureSneaker"), "login"=>myGet("login"), "nom"=>myGet("nom"), "prenom"=>myGet("prenom")));
+                ModelCommande::save(array("id_commande"=>myGet("idCommande"), "id_sneaker"=>myGet("idSneaker"), "date"=>myGet("date")));
                 $tab_c = ModelCommande::selectAll();
 
                 $pagetitle = "Commande créée";
@@ -122,6 +122,27 @@ class ControllerCommande {
         else {
             ControllerUtilisateur::connect();
         }
+    }
+
+    public static function myCommande() {
+        if(Session::is_user(myGet("login")) || Session::is_admin()) {
+            $c = ModelCommande::getCommandeByLogin($_SESSION["login"]);
+
+            if(!$c) {
+                    $pagetitle = "Erreur";
+                    $view = "error";
+            }
+            else {
+                    $pagetitle = "Affichage d'une commande";
+                    $view = "detail";
+            }
+        }
+        else {
+                $pagetitle = "Erreur";
+                $view = "error";
+        }
+        
+        require (File::build_path(array("view", "view.php")));
     }
     
 }

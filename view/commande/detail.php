@@ -4,14 +4,8 @@ if(Session::is_admin()) {
 }
 
 $id_commande_html = htmlspecialchars($c->get("id_commande"));
-$nom_sneaker_html = htmlspecialchars($c->get("nom_sneaker"));
-$marque_sneaker_html = htmlspecialchars($c->get("marque_sneaker"));
-$prix_sneaker_html = htmlspecialchars($c->get("prix_sneaker"));
-$couleur_sneaker_html = htmlspecialchars($c->get("couleur_sneaker"));
-$pointure_sneaker_html = htmlspecialchars($c->get("pointure_sneaker"));
 $login_html = htmlspecialchars($c->get("login"));
-$nom_html = htmlspecialchars($c->get("nom"));
-$prenom_html = htmlspecialchars($c->get("prenom"));
+$date_html = htmlspecialchars($c->get("date"));
 
-echo "<p> Id commande : $id_commande_html, nom : $nom_sneaker_html, marque : $marque_sneaker_html, prix : $prix_sneaker_html, couleur : $couleur_sneaker_html, pointure : $pointure_sneaker_html, login : $login_html, nom : $nom_html, prenom : $prenom_html </p>";
+echo "<p> Id commande : $id_commande_html, login : $login_html, date : $date_html </p>";
 ?>
