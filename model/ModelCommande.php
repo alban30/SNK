@@ -29,22 +29,27 @@ class ModelCommande extends Model {
             }
     }
 
-    // public static function saveCommander($data) {
-    //         try {
-    //                 $sql = "INSERT INTO snk_commander ("id_sneaker", "quantité") VALUES ($_SESSION["login"],date("Y-m-d H:i:s"))";
-
-    //                 $req_prep = Model::$pdo->prepare($sql);
-    //                 $req_prep->execute($data);
-    //         } catch(PDOException $e) {
-    //                 if (Conf::getDebug()) {
-    //                         echo $e->getMessage(); // affiche un message d'erreur
-    //                 }
-    //                 else {
-    //                         echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
-    //                 }
-    //                 die();
-    //         }
-    // } 
+    public static function saveCommander($data) {
+            try {
+                    $login=$_SESSION["login"];
+                    $date=date("Y-m-d H:i:s");
+                    $sql = "INSERT INTO snk_commander (id_sneaker,quantité) VALUES (:tag_sneaker,:tag_date)";
+                    $req_prep = Model::$pdo->prepare($sql);
+                    $values=array(
+                        'tag_sneaker' => $data["idSneaker"],
+                        'tag_date' => $data["date"],
+                    );
+                    $req_prep->execute($values);
+            } catch(PDOException $e) {
+                    if (Conf::getDebug()) {
+                            echo $e->getMessage(); // affiche un message d'erreur
+                    }
+                    else {
+                            echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
+                    }
+                    die();
+            }
+    } 
 
 }
 ?>
