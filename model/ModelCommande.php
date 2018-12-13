@@ -33,11 +33,12 @@ class ModelCommande extends Model {
             try {
                     $login=$_SESSION["login"];
                     $date=date("Y-m-d H:i:s");
-                    $sql = "INSERT INTO snk_commander (id_sneaker,quantité) VALUES (:tag_sneaker,:tag_date)";
+                    $sql = "INSERT INTO snk_commander (id_sneaker,id_commande,quantité) VALUES (:tag_sneaker,:tag_commande,:tag_quantite)";
                     $req_prep = Model::$pdo->prepare($sql);
                     $values=array(
                         'tag_sneaker' => $data["idSneaker"],
-                        'tag_date' => $data["date"],
+                        'tag_commande' => $data["idCommande"],
+                        'tag_quantite' => $data["quantite"],
                     );
                     $req_prep->execute($values);
             } catch(PDOException $e) {
@@ -50,6 +51,27 @@ class ModelCommande extends Model {
                     die();
             }
     } 
+
+    public static function getMax() {
+        try {
+            $sql = "SELECT MAX(id_commande) from snk_commande";
+            $req_prep = Model::$pdo->prepare($sql);  
+            $req_prep->execute();
+            $tab_max = $req_prep->fetchColumn();
+            if (empty($tab_max))
+                return false;
+            return $tab_max[0];
+        }
+        catch (PDOException $e) {
+          if (Conf::getDebug()) {
+            echo $e->getMessage(); // affiche un message d'erreur
+          }
+          else {
+            echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
+          }
+          die();
+        }
+    }
 
 }
 ?>

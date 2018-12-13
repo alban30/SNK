@@ -2,6 +2,7 @@
 require_once (File::build_path(array("model", "ModelCommande.php"))); // chargement du modèle
 require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
 
+
 class ControllerCommande {
     protected static $object = "commande";
 
@@ -99,16 +100,19 @@ class ControllerCommande {
             );
             ModelCommande::save($arraycommande);
             $tab = unserialize($_COOKIE['panier']);
+            $res=ModelCommande::getMax();
             for ($i=0; $i < sizeof($tab); $i++) { 
                 $arraycommande = array(
-                    'idSneaker' => $_COOKIE["panier"],
-                    'date' => date("Y-m-d H:i:s"),
+                    'idSneaker' => $tab[$i],
+                    'idCommande' => $res,
+                    'quantite' => "0",
                 );
                 ModelCommande::saveCommander($arraycommande);
             }
             $pagetitle = "Commande effectuée !";
             $view = "validate";
             require (File::build_path(array("view", "view.php")));
+            setcookie ("panier", "", time() - 1);
         }
         else {
             ControllerUtilisateur::connect();

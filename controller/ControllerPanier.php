@@ -31,7 +31,7 @@ class ControllerPanier {
                     require File::build_path(array("view", "view.php"));
             }
             else {
-                    $pagetitle = "Erreur";
+                    $pagetitle = "Panier";
                     $view = "error";
                     require (File::build_path(array("view", "view.php")));
             }
