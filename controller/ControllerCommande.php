@@ -132,7 +132,7 @@ class ControllerCommande {
         if(Session::is_user(myGet("login")) || Session::is_admin()) {
             $c = ModelCommande::getCommandeByLogin($_SESSION["login"]);
 
-            if(!$c) {
+            if(empty($c)) {
                     $pagetitle = "Erreur";
                     $view = "error";
             }
@@ -142,8 +142,7 @@ class ControllerCommande {
             }
         }
         else {
-                $pagetitle = "Erreur";
-                $view = "error";
+            ControllerUtilisateur::connect();
         }
         
         require (File::build_path(array("view", "view.php")));

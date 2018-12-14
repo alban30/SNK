@@ -6,7 +6,7 @@ class ModelCommande extends Model {
     protected static $primary="id_commande";
 
     private $id_commande;
-    private $id_sneaker;
+    private $login;
     private $date;
 
     public function get($nom_attribut) {
@@ -24,7 +24,7 @@ class ModelCommande extends Model {
     public function __construct($data = array()) {
             if (!empty($data)) {
                     $this->$id_commande = $data("id_commande");
-                    $this->$id_sneaker = $data("id_sneaker");
+                    $this->$login = $data("login");
                     $this->$date = $data("date");   
             }
     }
@@ -55,17 +55,17 @@ class ModelCommande extends Model {
 
     public static function getCommandeByLogin($login) {
         try {
-        $sql = "SELECT * from commande WHERE login=:tag_login";
-        $req_prep = Model::$pdo->prepare($sql);
-        $values = array(
-            "tag_login" => $login,
-        );   
-        $req_prep->execute($values);
-        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelCommande');
-        $tab_c = $req_prep->fetchAll();
-        if (empty($tab_c))
-            return false;
-        return $tab_c;
+            $sql = "SELECT * FROM snk_commande WHERE login=:tag_login";
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "tag_login" => $login,
+            );   
+            $req_prep->execute($values);
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelCommande');
+            $tab_c = $req_prep->fetchAll();
+            if (empty($tab_c))
+                return false;
+            return $tab_c;
         }
         catch (PDOException $e) {
           if (Conf::getDebug()) {
