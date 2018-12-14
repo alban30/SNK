@@ -6,10 +6,6 @@ if(Session::is_admin()): ?>
 <?php endif ?>
 <article class="content product">
     <?php foreach ($tab_a as $a): ?>
-        <?php
-        $i = 0;
-        if($i%3 == 0):
-        ?>
         <div>
             <a href="index.php?controller=accessoire&action=read&idAccessoire=<?php echo rawurlencode($a->get("id_accessoire")) ?>">
               <img src="img/product/accessories/<?php echo $a->get("id_accessoire") ?>.png" alt="product <?php echo $a->get("id_accessoire") ?>">
@@ -18,9 +14,5 @@ if(Session::is_admin()): ?>
               <p><i></i><?php echo $a->get("prix_accessoire") ?> €</p>
             </a>
         </div>
-        <?php
-        endif;
-        $i++;
-        ?>
     <?php endforeach ?>
 </article>

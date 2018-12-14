@@ -18,10 +18,8 @@
         </div>
     </form>
     <div>
-        <p>
-            <?php
-            
-            ?>
-        </p>
+        <div class="create">
+            <a href="index.php?controller=utilisateur&action=create"><input type="button" value="Inscription" /></a>
+        </div>
     </div>
 </article>
