@@ -1,6 +1,8 @@
 <?php
 require_once (File::build_path(array("model", "ModelCommande.php"))); // chargement du modèle
 require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
+require_once (File::build_path(array("controller", "ControllerPanier.php")));
+
 
 
 class ControllerCommande {
@@ -104,15 +106,17 @@ class ControllerCommande {
                 'date' => date("Y-m-d H:i:s"),
             );
             ModelCommande::save($arraycommande);
+            $res = Model::$pdo->lastInsertId();
             $tab = unserialize($_COOKIE['panier']);
-            $res=ModelCommande::getMax();
-            for ($i=0; $i < sizeof($tab); $i++) { 
+            $newTabElement = ControllerPanier::generateQuantityTab();
+            for ($i=0; $i < sizeof($newTabElement[0]); $i++) { 
                 $arraycommande = array(
-                    'idSneaker' => $tab[$i],
+                    'idSneaker' => $newTabElement[0][$i],
                     'idCommande' => $res,
-                    'quantite' => "0",
+                    'quantite' => $newTabElement[1][$i],
                 );
-                ModelCommande::saveCommander($arraycommande);
+
+                ModelCommande::saveCommander($arraycommande);                
             }
             $pagetitle = "Commande effectuée !";
             $view = "validate";
