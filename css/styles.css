@@ -245,6 +245,10 @@ footer p img {
   height: auto;
 }
 
+.first a {
+  text-decoration: none;
+}
+
 .first img {
   width: 100%;
 }
