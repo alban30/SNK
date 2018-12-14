@@ -24,6 +24,7 @@ $marque_sneaker_html = htmlspecialchars($s->get("marque_sneaker"));
 		<div><?php echo $marque_sneaker_html ?></div>
 		<div><?php echo $nom_sneaker_html ?></div>
 		<div><?php echo $prix_sneaker_html ?> €</div>
+		<a  href="index.php?controller=panier&action=addPanier&idSneaker=<?php echo $id_sneaker_html;?>">Ajouter cette sneaker au panier</a>
 		<div class="button button2"><input type="submit" value="Ajouter au panier" /></div>
 	</div>
 </article>
