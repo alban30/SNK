@@ -65,8 +65,8 @@ class ControllerUtilisateur {
 						$nonce = Security::generateRandomHex();
 						ModelUtilisateur::save(array("login" => ucfirst(myGet("login")), "nom" => ucfirst(myGet("nom")), "prenom" => ucfirst(myGet("prenom")), "email" => myGet("email"), "mdp" => Security::chiffrer(myGet("mdp")), "nonce" => $nonce));
 
-						$mail = '<p>Vous venez de vous inscrire sur <strong>Blablacar</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . myGet("login") . '&nonce=' . $nonce . '">ici</a>.<br/>Blablacar vous remercie ! <em>Blablachatte !</em></p>';
-						mail(myGet("email"), "Inscription - Blablacar", $mail);
+						$mail = '<p>Vous venez de vous inscrire sur <strong>SNK - World Famous</strong>, pour confirmer votre inscription veuillez cliquer <a href="http://webinfo.iutmontp.univ-montp2.fr/~pereiraa/SNK/index.php?controller=utilisateur&action=validate&login=' . rawurlencode((myGet("login")) . '&nonce=' . rawurlencode($nonce) . '">ici</a>.<br/>SNK vous remercie pour votre inscription ! <em>Le meilleur de la sneakers est sur SNK !</em></p>';
+						mail(myGet("email"), "Inscription - SNK", $mail);
 
 						$pagetitle = "Utilisateur créé";
 						$view = "created";

@@ -473,10 +473,54 @@ footer p img {
   DETAIL PRODUCT
 ------------------------------*/
 
-.detail {
-
+.detail a {
+  text-decoration: none;
 }
 
-.detail img {
+.detail div:nth-child(2) div:nth-child(2) {
+  font-size: 1.5em;
+  margin-bottom: -.2em;
+}
+
+.detail div:nth-child(2) div:nth-child(3) {
+  font-size: small;
+}
+
+.detail div:nth-child(2) div:nth-child(4) {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.detail div:first-child input {
+  background: #161616;
+  border: 1px;
+  color: white;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  margin-top: .25em;
+  margin-bottom: .5em;
+  font-size: .8em;
+}
+
+.detail input {
+  background: #161616;
+  border: 1px;
+  color: white;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  font-size: .8em;
+}
+
+.espace {
+  padding-top: 4em;
+}
+
+.detailimg img {
   width: 40em;
 }
