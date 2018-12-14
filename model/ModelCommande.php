@@ -55,7 +55,7 @@ class ModelCommande extends Model {
 
     public static function getCommandeByLogin($login) {
         try {
-            $sql = "SELECT * FROM snk_commande WHERE login=:tag_login";
+            $sql = "SELECT ce.id_commande,login,date,s.id_sneaker,nom_sneaker,prix_sneaker,couleur_sneaker,pointure_sneaker,marque_sneaker FROM snk_sneaker s JOIN snk_commander cr ON s.id_sneaker=cr.id_sneaker JOIN snk_commande ce ON cr.id_commande=ce.id_commande WHERE login=:tag_login";
             $req_prep = Model::$pdo->prepare($sql);
             $values = array(
                 "tag_login" => $login,
