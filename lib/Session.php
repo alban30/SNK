@@ -18,5 +18,12 @@ class Session {
     }
 
 
+    public static function getUserCommande() {
+        if(isset($_SESSION["login"])) {
+            echo '<li><a href="index.php?controller=commande&action=myCommande">Mes Commandes</a></li>';
+        }
+    }
+
+
 }
 ?>

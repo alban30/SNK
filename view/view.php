@@ -34,6 +34,8 @@
                     </ul>
                     <ul class="menu right">
                         <?php Session::getUserMenu(); ?>
+                        <?php Session::getUserCommande(); ?>
+
                         <li>
                             <a href="index.php?controller=panier&action=afficheAllPanier"><i class="material-icons">shopping_cart</i></a>
                         </li>
