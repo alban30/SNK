@@ -133,8 +133,8 @@ class ControllerCommande {
             $c = ModelCommande::getCommandeByLogin($_SESSION["login"]);
 
             if(empty($c)) {
-                    $pagetitle = "Erreur";
-                    $view = "error";
+                    $pagetitle = "CommandeVide";
+                    $view = "commandeVide";
             }
             else {
                     $pagetitle = "Affichage d'une commande";
