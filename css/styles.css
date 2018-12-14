@@ -468,6 +468,27 @@ footer p img {
   margin-bottom: 1em;
 }
 
+.create {
+    text-align: center;
+}
+
+.create a {
+  text-decoration: none;
+}
+
+.create input {
+  background: #161616;
+  border: 1px;
+  color: white;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  margin-top: .25em;
+  margin-bottom: .5em;
+  font-size: .8em;
+}
+
 /*------------------------------
   DETAIL PRODUCT
 ------------------------------*/

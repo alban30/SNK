@@ -1,7 +1,7 @@
 <?php
 if(Session::is_admin()): ?>
-    <div class="contenu">
-        <a href="index.php?controller=accessoire&action=create">Créer un accessoire</a>
+    <div class="create">
+        <a href="index.php?controller=accessoire&action=create"><input type="button" value="Créer un accessoire" /></a>
     </div>
 <?php endif ?>
 <article class="content product">
